@@ -1,0 +1,63 @@
+{
+    "fileheader.configObj": {
+        "createFileTime": true,
+        "language": {
+            "languagetest": {
+                "head": "/$$",
+                "middle": " $ @",
+                "end": " $/"
+            }
+        },
+        "autoAdd": true,
+        "autoAddLine": 100,
+        "autoAlready": true,
+        "annotationStr": {
+            "head": "/*",
+            "middle": " * @",
+            "end": " */",
+            "use": false
+        },
+        "headInsertLine": {
+            "php": 2,
+            "py": 0,
+            "java": 0,
+            "c" :0,
+            "cpp": 0,
+            "sh" :0,
+            "h" :0
+        },
+        "beforeAnnotation": {
+            "py": "#!/usr/bin/env python\n# coding=utf-8",
+            "sh": "#!/bin/bash\nset -eoux pipefail"
+        },
+        "afterAnnotation": {},
+        "specialOptions": {},
+        "switch": {
+            "newlineAddAnnotation": true
+        },
+        "prohibitAutoAdd": [
+            "json","md","wav","xml"
+        ],
+        "moveCursor": true,
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "atSymbol": "@",
+        "atSymbolObj": {},
+        "colon": ": ",
+        "colonObj": {},
+        "filePathColon": "路径分隔符替换",
+        "showErrorMessage": false,
+        "wideSame": false,
+        "wideNum": 13,
+        "CheckFileChange": false
+    },
+    "fileheader.customMade": {
+        //"Description": "",
+        //"version": "",
+        "Github":"https://github.com/Certseeds",
+        "Organization": "SUSTech",
+        "Author": "nanoseeds",
+        "Date": "Do not edit",
+        "LastEditors": "nanoseeds",
+        "LastEditTime": "Do not edit"
+    }
+}
