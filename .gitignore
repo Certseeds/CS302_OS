@@ -1,10 +1,14 @@
-# @LastEditTime: 2020-02-18 11:09:45
+# @LastEditTime: 2020-02-19 18:07:44
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
 # Created by https://www.gitignore.io/api/windows,visualstudiocode,audio,c,c++,cmake,data,docz,haskell,java,jetbrains+all,linux,rust,video,visualstudio,zsh
 # Edit at https://www.gitignore.io/?templates=windows,visualstudiocode,audio,c,c++,cmake,data,docz,haskell,java,jetbrains+all,linux,rust,video,visualstudio,zsh
 
 *.pdf
+*.ppt
+*.pptx
+*.doc
+*.docx
 ### Audio ###
 *.aif
 *.iff
@@ -114,8 +118,6 @@ _deps
 *.gbr
 *.key
 *.pps
-*.ppt
-*.pptx
 *.sdf
 *.tax2010
 *.vcf
