@@ -5,8 +5,8 @@ set -eoux pipefail
  # @Organization: SUSTech
  # @Author: nanoseeds
  # @Date: 2020-02-20 16:50:41
- # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-20 22:38:40
+ # @LastEditors: Please set LastEditors
+ # @LastEditTime: 2020-02-20 22:38:08
  ###
 if [[ -d "./test_directory" ]]; then
     rm -r ./test_directory

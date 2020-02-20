@@ -5,8 +5,8 @@ set -eou pipefail
  # @Organization: SUSTech
  # @Author: nanoseeds
  # @Date: 2020-02-20 09:41:05
- # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-20 14:48:53
+ # @LastEditors: Please set LastEditors
+ # @LastEditTime: 2020-02-20 23:06:10
  ###
 
 public_str1=""
@@ -69,17 +69,38 @@ cd ./test_directory
 for file in *
 do
     echo "'${file}'"
-    array[i]="\"${file}\""
+    array[i]="${file}"
     i=$(( i + 1 ))
 done
 echo "half"
 echo ${array[*]}
 for file in ${array[*]}
 do
-    get_fullpath ${file}
+    #get_fullpath ${file}
     echo ${file}
     echo "------"
 done
 cd ${origin}
+basic="\\\\\\\\"
+echo ${#basic}
 
+a=("\\n\\t\\0" "\\n\\t%^&*\\0\\9\$1" "? @ # \$&()\\|; ''\"\"<>" "a b" "d_1" "d_2")
+a=(
+    $(
+        for l in ${a[@]}; 
+        do echo $l; 
+        done | sort
+    )
+)
+b=("\\n" "\\n" "?" "a" "d" "d")
+b=(
+    $(
+        for l in ${b[@]}; 
+        do echo $l; 
+        done | sort
+    )
+)
+echo ${a[@]}
+echo ${b[@]}
+echo ${a[@]} | awk 'BEGIN{RS=" ";} {print $1}' | sort
 IFS=${OLD_IFS}
