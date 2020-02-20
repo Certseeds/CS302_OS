@@ -6,7 +6,7 @@ set -eou pipefail
  # @Author: nanoseeds
  # @Date: 2020-02-19 19:09:27
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-20 15:06:27
+ # @LastEditTime: 2020-02-20 15:07:56
  ###
 
 public_str1=""
@@ -46,8 +46,8 @@ rela_absu(){
 
 main(){
     echo "main begin"
-    readpath_1=${1}
-    readpath_2=${2}
+    local readpath_1=${1}
+    local readpath_2=${2}
     echo ${readpath_1}
     echo ${readpath_2}
     # if [[ "${readpath_1:0:1}" = "/" ]]; then
@@ -68,16 +68,16 @@ main(){
         touch ${readpath_2}
     fi
     echo ${readpath_1} ${readpath_2}
-    readpath_3=${readpath_1:0:-1}
-    readpath_4=${readpath_2:0:-1}
+    local readpath_3=${readpath_1:0:-1}
+    local readpath_4=${readpath_2:0:-1}
     echo  "["${readpath_3##*/}"]" >> ${readpath_2}    
-    path_ori=`pwd`
+    local path_ori=`pwd`
     cd ${readpath_1}
-    count_value=0
+    local count_value=0
     for file in *
     do
         echo "'${file}'"
-        array[count_value]="${file}"
+        local array[count_value]="${file}"
         count_value=$(( count_value + 1 ))
     done
     echo "read into finish"
@@ -92,7 +92,7 @@ main(){
     for file in ${array[*]}; do
         if [[ -d ${file} ]]; then
             rela_absu ${file}
-            temp=${public_str1}
+            local temp=${public_str1}
             echo ${temp} ${readpath_2}
             main ${temp} ${readpath_2}
         fi
