@@ -6,7 +6,7 @@ set -eoux pipefail
  # @Author: nanoseeds
  # @Date: 2020-02-20 16:50:41
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-20 17:16:08
+ # @LastEditTime: 2020-02-20 22:38:40
  ###
 if [[ -d "./test_directory" ]]; then
     rm -r ./test_directory
@@ -22,7 +22,7 @@ cd ./test_directory
     mkdir "d_1"
     mkdir "d_2"
     cd "a b"
-        touch "z z \$ z.txt\`"
+        mkdir "z z \$ z.txt\`"
     cd ..
     cd "d_1"
         touch "aa"
