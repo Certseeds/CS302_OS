@@ -1,12 +1,12 @@
 #!/bin/bash
-set -eou pipefail
+set -eoux pipefail
 ###
  # @Github: https://github.com/Certseeds
  # @Organization: SUSTech
  # @Author: nanoseeds
  # @Date: 2020-02-20 09:41:05
- # @LastEditors: Please set LastEditors
- # @LastEditTime: 2020-02-20 23:06:10
+ # @LastEditors: nanoseeds
+ # @LastEditTime: 2020-02-24 22:12:51
  ###
 
 public_str1=""

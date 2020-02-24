@@ -1,14 +1,16 @@
+#!/bin/bash
+set -eoux pipefail
 ###
- # @Author: your name
- # @Date: 2020-02-20 15:34:14
- # @LastEditTime: 2020-02-24 22:07:32
+ # @Organization: SUSTech
  # @LastEditors: nanoseeds
- # @Description: In User Settings Edit
- # @FilePath: \test_case\baseline.sh
+ # @LastEditTime: 2020-02-24 22:14:39
  ###
-#! /bin/bash
-rm "output.log"
-rm "result.log"
+if [[ -d "output.log" ]]; then
+    rm "output.log"
+fi
+if [[ -d "result.log" ]]; then
+    rm "result.log"
+fi
 ./test_case.sh
 $1 test_directory output.log &> /dev/null
 sleep 3
