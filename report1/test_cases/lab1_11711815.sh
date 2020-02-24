@@ -1,14 +1,13 @@
 #!/bin/bash
-set -eoux pipefail
+set -eou  pipefail
 ###
  # @Github: https://github.com/Certseeds
  # @Organization: SUSTech
  # @Author: nanoseeds
  # @Date: 2020-02-19 19:09:27
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-21 09:27:41
+ # @LastEditTime: 2020-02-24 21:52:47
  ###
-# TODO 递归改成循环,变成栈
 public_str1=""
 file_number=0
 folder_number=0
@@ -52,7 +51,8 @@ get_out_paths(){
     echo ${path}
     cd ${path}
     if [[ "" != `ls ${path}` ]]; then
-        for file in * ; do
+        for file in `LANG=en_US.UTF-8 ls | sort -d`; do
+        # for file in * ; do
             echo ${file}
             file_number=$(( file_number + 1 ))
             if [[ -d ${file} ]]; then
@@ -75,7 +75,8 @@ out_paths (){
     local inside_path=`pwd`
     echo  "["${inside_path##*/}"]" >> ${output}
     if [[ "" != `ls ${path}` ]]; then
-        for file in * ; do
+        for file in `LANG=en_US.UTF-8 ls | sort -d`; do
+        # for file in * ; do
             echo ${file}
             rela_absu ${file}
             echo "will insert ${public_str1}"
@@ -111,6 +112,8 @@ main(){
 
 OLD_IFS=$IFS
 IFS=$(echo -en "\n\b")
+OLD_LANG=${LANG}
+LANG="en_US"
 echo ${1}
 echo ${2}
 rela_absu ${1}
@@ -128,4 +131,5 @@ echo "main finish "
 echo "[Directories Count]:${folder_number}" >> ${output}
 echo "[Files Count]:${file_number}" >> ${output}
 cat ${output}
+LANG=${OLD_LANG}
 IFS=${OLD_IFS}

@@ -27,7 +27,7 @@
             "h" :0
         },
         "beforeAnnotation": {
-            "py": "#!/usr/bin/env python\n# coding=utf-8",
+            "py": "#!/usr/bin/env python3\n# coding=utf-8",
             "sh": "#!/bin/bash\nset -eoux pipefail"
         },
         "afterAnnotation": {},

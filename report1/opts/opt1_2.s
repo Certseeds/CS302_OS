@@ -11,7 +11,7 @@ main:
 	.cfi_startproc
 	subq	$8, %rsp
 	.cfi_def_cfa_offset 16
-	movl	$3, %edx
+	movl	$114517, %edx
 	leaq	.LC0(%rip), %rsi
 	movl	$1, %edi
 	movl	$0, %eax

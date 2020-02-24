@@ -15,7 +15,7 @@ main:
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register 6
 	subq	$16, %rsp
-	movl	$0, -4(%rbp)
+	movl	$114514, -4(%rbp)
 	addl	$1, -4(%rbp)
 	addl	$1, -4(%rbp)
 	addl	$1, -4(%rbp)
