@@ -6,7 +6,7 @@ set -eoux pipefail
  # @Author: nanoseeds
  # @Date: 2020-02-19 19:09:27
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-24 22:15:53
+ # @LastEditTime: 2020-02-26 18:43:00
  ###
 public_str1=""
 file_number=0
@@ -42,7 +42,7 @@ rela_absu(){
     if [[ -d ${relative_path} && -n ${temp_path2} && ${temp_path2: -1} != "/"  ]]; then
         temp_path2=${temp_path2}"/"
     fi 
-    public_str1=${tmp_fullpath1}/${temp_path2}
+    public_str1=${tmp_fullpath1}"/"${temp_path2}
     return 0
 }
 get_out_paths(){

@@ -6,7 +6,7 @@ set -eoux pipefail
  # @Author: nanoseeds
  # @Date: 2020-02-20 16:50:41
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-24 21:38:03
+ # @LastEditTime: 2020-02-26 18:43:55
  ###
 if [[ -d "./test_directory" ]]; then
     rm -r ./test_directory

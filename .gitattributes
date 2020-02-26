@@ -8,8 +8,8 @@
 
 # scripts
 *.sh text eol=lf
+*.log text eol=lf
 *.bat text eol=crlf
-
 # Audio
 *.wav binary
 *.mp3 binary
