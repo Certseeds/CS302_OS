@@ -1,11 +1,12 @@
 /*
- * @Author: your name
+ * @Github: https://github.com/Certseeds
+ * @Organization: SUSTech
+ * @Author: nanoseeds
  * @Date: 2020-02-19 18:35:23
- * @LastEditTime: 2020-02-24 12:59:04
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \undefinedc:\Users\nanoseeds\OneDrive\StudyThingS\CS302_OS\report1\opts\opt.c
+ * @LastEditors: nanoseeds
+ * @LastEditTime: 2020-02-29 21:20:02
  */
+
 #include<stdio.h>
 
 int main(){
@@ -16,3 +17,5 @@ int main(){
     printf("%d\n",x);
     return 0;
 }
+// it is really useful to use
+//  gcc -S -fverbose-asm -g opt.c -O0  -o opt0_3.s
