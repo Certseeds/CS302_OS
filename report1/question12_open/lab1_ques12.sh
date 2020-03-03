@@ -6,7 +6,7 @@ set -eoux pipefail
  # @Author: nanoseeds
  # @Date: 2020-02-19 19:09:27
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-02-26 18:43:00
+ # @LastEditTime: 2020-03-03 17:25:11
  ###
 public_str1=""
 file_number=0
@@ -42,6 +42,7 @@ rela_absu(){
     if [[ -d ${relative_path} && -n ${temp_path2} && ${temp_path2: -1} != "/"  ]]; then
         temp_path2=${temp_path2}"/"
     fi 
+    
     public_str1=${tmp_fullpath1}"/"${temp_path2}
     return 0
 }
@@ -108,9 +109,46 @@ main(){
     done
     echo ${path_array[@]}
 }
-## 逻辑大概是,读进来之后,都先转换成绝对路径,先都输出一边,然后吧目录加进列表中,循环调用
+ensure_output_path(){
+    if [[ -z ${output} ]]; then
+        return 1
+    fi
+    IFS="/"
+    local path_origin=`pwd`
+    cd "/"
+    local temp_output_path=${output:1}
+    temp_output_path=(${temp_output_path})
+    echo ${#temp_output_path[@]}
+    echo ${temp_output_path[@]}
+    for element in ${temp_output_path[@]} ; do
+        echo ${element}
+    done
+    local final_path="./"
+    for element in ${temp_output_path[@]} ; do
+        echo ${element}
+        cd "./""${final_path}"
+        final_path="${element}"
+        if [[ -d "./""${element}" ]]; then
+        echo ""
+        else
+            if [[ -f "./""${element}" ]]; then
+            # 存在一个同名文件    
+                rm "./""${element}"
+            fi
+            mkdir "./""${element}"
+        fi
+    done
+    if [[ -d "./""${final_path}" && ${final_path} != "./"  ]]; then
+        rm -rf "${final_path}"
+    fi
+    touch "./""${final_path}"
+    cd "${path_origin}"
+    IFS=$(echo -en "\n\b")
+}
+## 逻辑大概是,读进来之后,都先转换成绝对路径,确认输出路径存在并检验
+# 都输出一边,然后吧目录加进列表中,循环调用
 
-OLD_IFS=$IFS
+OLD_IFS=${IFS}
 IFS=$(echo -en "\n\b")
 OLD_LANG=${LANG}
 LANG="en_US"
@@ -120,12 +158,11 @@ rela_absu ${1}
 input=${public_str1}
 rela_absu ${2}
 output=${public_str1}
+echo ${output}
+# ./testing.sh ${output}
+ensure_output_path
 echo ${input}
 echo ${output}
-if [[ -f ${output} ]]; then
-    rm ${output}
-fi
-touch ${output}
 main ${input}
 echo "main finish " 
 echo "[Directories Count]:${folder_number}" >> ${output}
