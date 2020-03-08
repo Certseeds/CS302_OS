@@ -1,3 +1,11 @@
+/*
+ * @Github: https://github.com/Certseeds
+ * @Organization: SUSTech
+ * @Author: nanoseeds
+ * @Date: 2020-03-05 10:06:11
+ * @LastEditors: nanoseeds
+ * @LastEditTime: 2020-03-05 18:52:17
+ */
 #include <stdio.h>
 #include <signal.h>
 #include <stddef.h>
@@ -17,21 +25,18 @@ int main()
   
 	ppid=getpid();//得到近程号
 	cpid=fork();
-  
+    signal(SIGTTOU, SIG_IGN);
 	if (cpid<0){
 		exit(-1);
 	}
 	if (!cpid){
 		cpid=getpid();
 		fprintf(stdout,"ID(child)=%d\n",cpid);
-		//setpgid(cpid,cpid);
+		setpgid(cpid,cpid);
 		tcsetpgrp(0,cpid);
 		fprintf(stdout,"ID(child)=%d\n",getpid());
 		execvp(prog_argv[0],prog_argv);
 	}else{
-	    fprintf(stdout,"ID(parent)=%d\n",ppid);
-	    fprintf(stdout,"ID(parent)=%d\n",ppid);
-	    fprintf(stdout,"ID(parent)=%d\n",ppid);
 	    fprintf(stdout,"ID(parent)=%d\n",ppid);
 		setpgid(cpid,cpid);/* 设置进程组 */
 	    tcsetpgrp(0,cpid);/* 设置控制终端为子进程拥有 */
