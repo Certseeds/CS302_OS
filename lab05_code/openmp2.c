@@ -1,7 +1,14 @@
+/*
+ * @Github: https://github.com/Certseeds
+ * @Organization: SUSTech
+ * @LastEditors: nanoseeds
+ * @LastEditTime: 2020-03-18 16:54:52
+ */
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+//gcc openmp2.c -o openmp2 -fopenmp
 int main (int argc, char *argv[]) 
 {
 	int a[80],b[80],c[80];

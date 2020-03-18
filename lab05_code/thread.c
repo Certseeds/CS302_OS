@@ -1,8 +1,14 @@
+/*
+ * @Github: https://github.com/Certseeds
+ * @Organization: SUSTech
+ * @LastEditors: nanoseeds
+ * @LastEditTime: 2020-03-18 16:55:05
+ */
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #define NUM_THREADS	5
-
+// gcc thread.c -o  thread -pthread
 struct msg{
   int id;
   char* word; 

@@ -1,3 +1,9 @@
+/*
+ * @Github: https://github.com/Certseeds/CS302_OS
+ * @Organization: SUSTech
+ * @LastEditors: nanoseeds
+ * @LastEditTime: 2020-03-18 17:25:27
+ */
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -9,14 +15,15 @@
 #include <fcntl.h>
 #include <time.h>
 #include "job.h"
-
+// what should do.
 int jobid = 0;
 int siginfo = 1;
 int fifo;
 int globalfd;
 
 struct waitqueue *head = NULL;
-struct waitqueue *next = NULL, *current = NULL;
+struct waitqueue *next = NULL;
+struct waitqueue *current = NULL;
 
 void schedule()
 {
@@ -81,7 +88,7 @@ void updateall()
 	
 	/* update ready job's wait_time */
 	for (p = head; p != NULL; p = p->next) {
-		p->job->wait_time += 1；
+		p->job->wait_time += 1;
 	}
 }
 
@@ -422,8 +429,7 @@ void do_stat()
 	printf("\n");
 }
 
-int main()
-{
+int main(){
 	struct timeval interval;
 	struct itimerval new,old;
 	struct stat statbuf;

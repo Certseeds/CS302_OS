@@ -3,7 +3,8 @@
 
 # Created by https://www.gitignore.io/api/windows,visualstudiocode,audio,c,c++,cmake,data,docz,haskell,java,jetbrains+all,linux,rust,video,visualstudio,zsh
 # Edit at https://www.gitignore.io/?templates=windows,visualstudiocode,audio,c,c++,cmake,data,docz,haskell,java,jetbrains+all,linux,rust,video,visualstudio,zsh
-
+*
+!*.*
 *.pdf
 *.ppt
 *.pptx

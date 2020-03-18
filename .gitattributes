@@ -105,7 +105,7 @@
 *.lo    binary
 *.o     binary
 *.obj   binary
-
+*.s     text eol=crlf linguist-language=c
 # Precompiled Headers
 *.gch   binary
 *.pch   binary

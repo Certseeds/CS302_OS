@@ -51,9 +51,7 @@
         "CheckFileChange": false
     },
     "fileheader.customMade": {
-        //"Description": "",
-        //"version": "",
-        "Github":"https://github.com/Certseeds",
+        "Github":"https://github.com/Certseeds/CS302_OS",
         "Organization": "SUSTech",
         "Author": "nanoseeds",
         "Date": "Do not edit",
