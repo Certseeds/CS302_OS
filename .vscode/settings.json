@@ -2,10 +2,15 @@
     "fileheader.configObj": {
         "createFileTime": true,
         "language": {
-            "languagetest": {
-                "head": "/$$",
-                "middle": " $ @",
-                "end": " $/"
+            "gitattributes":{
+                "head":"### ",
+                "middle":" # @",
+                "end":"### "
+            },
+            "gitignore":{
+                "head":"### ",
+                "middle":"## @",
+                "end":"### "
             }
         },
         "autoAdd": true,
