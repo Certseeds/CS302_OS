@@ -1,0 +1,92 @@
+Enter the no readers : 25
+Enter the no Writers : 20
+writer gets sem
+writer writes 1 and releases
+Reader gets sem
+Reader gets sem
+Reader gets sem
+Reader reads 1 and releases
+Reader reads 1 and releases
+Reader reads 1 and releases
+writer gets sem
+writer writes 2 and releases
+Reader gets sem
+Reader reads 2 and releases
+writer gets sem
+writer writes 3 and releases
+Reader gets sem
+Reader reads 3 and releases
+Reader gets sem
+Reader gets sem
+Reader reads 3 and releases
+Reader reads 3 and releases
+writer gets sem
+writer writes 4 and releases
+writer gets sem
+writer writes 5 and releases
+writer gets sem
+writer writes 6 and releases
+writer gets sem
+writer writes 7 and releases
+writer gets sem
+writer writes 8 and releases
+Reader gets sem
+Reader gets sem
+Reader reads 8 and releases
+Reader reads 8 and releases
+Reader gets sem
+Reader gets sem
+Reader reads 8 and releases
+Reader reads 8 and releases
+writer gets sem
+writer writes 9 and releases
+Reader gets sem
+Reader reads 9 and releases
+Reader gets sem
+Reader reads 9 and releases
+Reader gets sem
+Reader reads 9 and releases
+writer gets sem
+writer writes 10 and releases
+Reader gets sem
+Reader gets sem
+Reader reads 10 and releases
+Reader reads 10 and releases
+writer gets sem
+writer writes 11 and releases
+writer gets sem
+writer writes 12 and releases
+Reader gets sem
+Reader reads 12 and releases
+writer gets sem
+writer writes 13 and releases
+Reader gets sem
+Reader reads 13 and releases
+Reader gets sem
+Reader reads 13 and releases
+Reader gets sem
+Reader reads 13 and releases
+writer gets sem
+writer writes 14 and releases
+Reader gets sem
+Reader reads 14 and releases
+Reader gets sem
+Reader reads 14 and releases
+Reader gets sem
+Reader reads 14 and releases
+Reader gets sem
+Reader reads 14 and releases
+writer gets sem
+writer writes 15 and releases
+writer gets sem
+writer writes 16 and releases
+writer gets sem
+writer writes 17 and releases
+writer gets sem
+writer writes 18 and releases
+writer gets sem
+writer writes 19 and releases
+Reader gets sem
+Reader reads 19 and releases
+writer gets sem
+writer writes 20 and releases

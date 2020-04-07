@@ -62,5 +62,7 @@
         "Date": "Do not edit",
         "LastEditors": "nanoseeds",
         "LastEditTime": "Do not edit"
-    }
+    },
+    "C_Cpp.clang_format_fallbackStyle": 
+    "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}"
 }

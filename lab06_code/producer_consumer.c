@@ -137,7 +137,7 @@ void *consumer(void *nothing) {
 
 			if(IS_EMPTY(head, tail, N))
 				pthread_cond_wait(&empty, &mutex);	// wait and unlock mutual exclusion.
-
+\
 			if(IS_FULL(head, tail, N))
 				pthread_cond_signal(&full);		// wakeup the producer.
 
