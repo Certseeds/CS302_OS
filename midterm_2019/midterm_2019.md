@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-04-08 21:44:56
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-04-09 11:26:59
+ * @LastEditTime: 2020-04-09 11:32:06
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 ## Midterm of CS302_OS 2019
@@ -114,11 +114,11 @@ Avg.Turn-Around Time = $((7-1)+(4-2)+(9-4)+(11-5))/4=4.75$
 |8->11 |$D^3$$\rightarrow$$Null$ |
 
 直接将执行阶段的请求阻塞,然后每执行完一个集中处理一次.
-顺序就是ABCD.
+顺序就是ABCD.  
 Avg.Turn-Around Time = $((5-1)+(6-2)+(8-4)+(11-5))/4=4.5$
 
 5. Proority 纯优先级,抢占式.
-每进一个Thread先判断优先级更新,之后更新queue,逐个执行.
+每进一个Thread先判断优先级更新,之后更新queue,逐个执行.  
 PS:也是优先级越高,执行越向前.
 
 |Time|Queue(after update)|
@@ -131,6 +131,7 @@ PS:也是优先级越高,执行越向前.
 |6|$D_3^3A_1^2$|
 |9|$A_1^2$|
 |11|$Null$|
+
 执行顺序,ABACCDDDAA
 Avg.Turn-around Time:$((11-1)+(3-2)+(6-4)+(9-5))/4=4.25$
 6. SRJF 抢占式最短时间算法
@@ -149,8 +150,9 @@ Avg.Turn-around Time:$((11-1)+(3-2)+(6-4)+(9-5))/4=4.25$
 |9 | D | $D^3$$\rightarrow$$D^2$|
 |10 | D | $D^2$$\rightarrow$$D^1$|
 |11 | Null | $D^1$$\rightarrow$$Null$|
-执行顺序,ABACCAADDD.
-Avg.Turn-around Time:
+
+执行顺序,ABACCAADDD.  
+Avg.Turn-around Time:  
 $((8-1)+(3-2)+(6-4)+(11-5))/4=4$.
 
 7. Result:
