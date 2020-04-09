@@ -1,6 +1,6 @@
 # header begin
 cmake_minimum_required(VERSION 3.10.2)
-project(CS305_OS LANGUAGES C)
+project(CS302_OS LANGUAGES C)
 
 set (CMAKE_C_STANDARD 99)
 # header end

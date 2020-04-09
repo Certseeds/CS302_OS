@@ -11,6 +11,10 @@
                 "head":"### ",
                 "middle":"## @",
                 "end":"### "
+            },"md":{
+                "head":"<!--",
+                "middle":" * @",
+                "end":" * @License: CC-BY-NC-SA_V4_0 or any later version \n -->"
             }
         },
         "autoAdd": true,
