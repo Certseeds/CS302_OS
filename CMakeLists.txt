@@ -9,3 +9,4 @@ set (CMAKE_C_STANDARD 99)
 #SET_TARGET_PROPERTIES(catch PROPERTIES LINKER_LANGUAGE CXX)
 
 add_subdirectory(lab05_report03/src)
+add_subdirectory(lab08_report05/src)

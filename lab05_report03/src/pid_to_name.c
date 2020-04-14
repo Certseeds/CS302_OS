@@ -1,12 +1,12 @@
-/* CS305_OS 
+/* CS302_OS 
     Copyright (C) 2020  nanoseeds
 
-    CS305_OS is free software: you can redistribute it and/or modify
+    CS302_OS is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
     published by the Free Software Foundation, either version 3 of the
     License, or (at your option) any later version.
 
-    CS305_OS is distributed in the hope that it will be useful,
+    CS302_OS is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Affero General Public License for more details.
@@ -15,7 +15,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
 /**
- * @Github: https://github.com/Certseeds/CS305_OS
+ * @Github: https://github.com/Certseeds/CS302_OS
  * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-03-30 11:12:12 

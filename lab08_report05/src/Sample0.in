@@ -1,0 +1,9 @@
+3
+4 2 3
+233 new 1 2 3
+888 new 4 3 3
+777 new 4 2 3
+233 request 1 2 0
+777 request 0 0 4
+777 request 0 0 3
+233 terminate
