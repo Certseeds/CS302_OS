@@ -40,7 +40,9 @@
 
 11. Producer-Consumer Problem（understand producer_consumer.c）: Are the data that consumers read from the buffer are produced by the same producer?
     + 并不是,生产者可以有任意多个,当且仅当只有一个生产者时,消费者才只能从缓存中读取相同的生产者生产的产品.
-
+    + 正确答案1:Yes
+    + 正确答案2:虽然一般来说是No,但是在这个问题中是yes,原因在第一条有写.
+    
 12. Producer-Consumer Problem（understand producer_consumer.c）: What is the order of the consumer's read operations and the producer's write operations, and their relationship
     + 消费者的读取动作一定在生产者的写入操作后面,因为无法对空的Buffer进行读取,但是生产者可以对空的Buffer进行写入.生产者所的写入操作和消费者的读取操作存在时间上的先后关系,逻辑上的因果关系.
 

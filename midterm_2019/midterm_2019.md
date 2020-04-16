@@ -767,7 +767,8 @@ In a single-processor multi-process system, if there are several ready processes
 ##### Answer
 1. 单处理器,多进程,可以并发,不能并行. 每当进程出现了新状态/状态转换,process schduling都会进行操作.
 2. 而critical section不是任何关键时间节点,只是"重要时刻/关键部分",不会发生process schduling.  
-所以选择:**C**
+<del>所以选择:**C**</del>  
+真正的正确选项:没有正确选项.
 
 #### Question 15
 ##### Question
