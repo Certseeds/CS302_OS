@@ -38,7 +38,6 @@
 #include <algorithm>
 #include <functional>
 #include <unordered_map>
-#include <unordered_set>
 
 using std::cout;
 using std::cin;
@@ -92,40 +91,35 @@ int main() {
 
 
 void FIFO_F() {
-    std::list<int32_t> list;
-    size_t list_size = 0;
+    std::deque<int32_t> deque_fifo;
     for (const auto &i:query_pages) {
-        if (std::find(list.begin(), list.end(), i) != std::end(list)) {
+        if (std::find(deque_fifo.begin(), deque_fifo.end(), i) != std::end(deque_fifo)) {
             hit++;
         } else {
-            if (list_size == cache_size) {
-                list.pop_front();
-                list_size--;
+            if (deque_fifo.size() == cache_size) {
+                deque_fifo.pop_front();
             }
-            list_size++;
-            list.push_back(i);
+            deque_fifo.push_back(i);
         }
     }
 }
 
 void LRU_F() {
-    std::unordered_set<int32_t> uset;
-    std::list<int32_t> li;
+    std::list<int32_t> list_lru;
     size_t list_size = 0;
     for (int32_t j = 0; j < query_numbers; ++j) {
         int32_t pq = query_pages[j];
-        if (uset.find(pq) != uset.end()) {
+        auto result = std::find(std::begin(list_lru), std::end(list_lru), pq);
+        if (result != std::end(list_lru)) {
             hit++;
-            li.remove(pq);
-            li.push_front(pq);
+            list_lru.erase(result);
+            list_lru.push_front(pq);
         } else {
             if (list_size == cache_size) {
-                uset.erase(li.back());
-                li.pop_back();
+                list_lru.pop_back();
                 list_size--;
             }
-            uset.insert(pq);
-            li.push_front(pq);
+            list_lru.push_front(pq);
             list_size++;
         }
     }
@@ -175,8 +169,7 @@ void CLOCK_F() {
                 if (vec_p[j % cache_size].second) {
                     vec_p[j % cache_size].second = false;
                 } else {
-                    vec_p[j % cache_size].first = pq;
-                    vec_p[j % cache_size].second = true;
+                    vec_p[j % cache_size] = std::make_pair(pq, true);
                     j++;
                     j %= cache_size;
                     head = j;
@@ -188,17 +181,18 @@ void CLOCK_F() {
 }
 
 void SECOND_CHANCE_F() {
-    size_t list_size_count = 0;
+    size_t list_lru_size_count = 0;
     size_t list_size = cache_size / 2;
     size_t u_page_size = cache_size - list_size;
-    std::list<int32_t> list; // FIFO , new
-    std::list<int32_t> list_lru;
+    std::deque<int32_t> deque_fifo; // FIFO , new
+    std::deque<int32_t> list_lru;
     //std::unordered_map<int32_t, int32_t> u_page; // LRU, old
     for (int32_t j = 0; j < query_numbers; ++j) {
         int32_t pq = query_pages[j];
         // in fifo
-        auto result = std::find(std::begin(list), std::end(list), pq);
-        if (result != std::end(list)) {
+        //auto result = std::find(std::begin(list), std::end(list), pq);
+        auto result = std::find(std::begin(deque_fifo), std::end(deque_fifo), pq);
+        if (result != std::end(deque_fifo)) {
             hit++;
             continue;
         }
@@ -207,31 +201,63 @@ void SECOND_CHANCE_F() {
         if (result2 != std::end(list_lru)) {
             hit++;
             list_lru.erase(result2);
-            if (list_size_count == list_size) {
-                int32_t temp = list.front();
-                list.pop_front();
-                list_size_count--;
-                list_lru.push_front(temp);
+            list_lru_size_count--;
+            if (deque_fifo.size() == list_size) {
+                list_lru.push_front(deque_fifo.front());
+                deque_fifo.pop_front();
+                list_lru_size_count++;
             }
-            list.push_back(pq);
-            list_size_count++;
+            deque_fifo.push_back(pq);
             continue;
         }
         // do not in any one.
-        if (list_size_count == list_size) {
-            int32_t temp = list.front();
-            list.pop_front();
-            list_size_count--;
-            if (list_lru.size() == u_page_size) {
+        if (deque_fifo.size() == list_size) {
+            if (list_lru_size_count == u_page_size) {
                 list_lru.pop_back();
+                list_lru_size_count--;
             }
-            list_lru.push_front(temp);
+            list_lru.push_front(deque_fifo.front());
+            deque_fifo.pop_front();
+            list_lru_size_count++;
         }
-        list.push_back(pq);
-        list_size_count++;
+        deque_fifo.push_back(pq);
     }
 }
 
+void SECOND_CHANCE_F_another_way() {
+    std::deque<pair<int32_t, bool>> lp;
+    size_t lp_size = 0;
+    int32_t temp = 0;
+    for (int32_t i = 0; i < query_numbers; ++i) {
+        int32_t pq = query_pages[i];
+        auto result = std::find_if(std::begin(lp), std::end(lp),
+                                   [& pq](const std::pair<int32_t, bool> &p1) { return pq == p1.first; });
+        if (result != std::end(lp)) {
+            hit++;
+            cout << "before " << result->second << end;
+            result->second = true;
+            cout << "after " << result->second << end;
+
+        } else {
+            if (lp_size == cache_size) {
+                for (size_t j = 0; j < cache_size + 1; ++j) {
+                    if (lp.front().second) {
+                        temp = lp.front().first;
+                        lp.pop_front();
+                        lp.emplace_back(temp, 0);
+                    } else {
+                        cout << j << end;
+                        lp.pop_front();
+                        break;
+                    }
+                }
+                lp_size--;
+            }
+            lp.emplace_back(pq, false);
+            lp_size++;
+        }
+    }
+}
 
 inline void read_input() {
     cin >> cache_size;
