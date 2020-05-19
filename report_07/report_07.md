@@ -1,3 +1,12 @@
+<!--
+ * @Github: https://github.com/Certseeds/CS302_OS
+ * @Organization: SUSTech
+ * @Author: nanoseeds
+ * @Date: 2020-05-10 18:42:40
+ * @LastEditors: nanoseeds
+ * @LastEditTime: 2020-05-19 17:14:01
+ * @License: CC-BY-NC-SA_V4_0 or any later version 
+ -->
 1. FIFO  
 FIFO算法,每次先查看是否在内存中,如果在内存中则不变;
 若不在内存中,如果队列已满,就踢走队列头部的页面,将页面调入队尾
