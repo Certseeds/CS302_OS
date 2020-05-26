@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-05-25 16:53:29
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-05-25 22:48:32
+ * @LastEditTime: 2020-05-26 10:59:31
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 ## Spark SQL: Relational Data Processing in Spark
@@ -65,7 +65,7 @@ ctx.sql("select count(*) , avg("age") from young")
 DataFrame支持常见的关系型操作,查询,过滤,join以及聚合,最终形成一个巨大的抽象语法树,交给`Catalyst`优化,并且还支持临时表(这种形式也支持惰性求值.).
 
 #### DataFrame的独到之处
-DartFrame因为内部存有元数据,所以可以被编译器实时减肥测到,并且给出提醒,节省了大量的空间(但是并不会像C++那样有编译期求值,还是运算期求值.).
+DartFrame因为内部存有元数据,所以可以被编译器实时检测到,并且给出提醒,节省了大量的空间(但是并不会像C++那样有编译期求值,还是运算期求值.).
 
 #### DataFrame与数据集的交互
 DataFrame既然能够无缝替换RDD,可以直接从RDD中提取元信息(Java使用反射,Python使用动态获取),并且还可以将RDD的数据和外部的数据进行合并.
