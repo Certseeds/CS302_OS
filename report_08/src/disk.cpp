@@ -143,6 +143,7 @@ void C_SCAN(deque<int32_t> track) {
     for (uint32_t i = 0; i < temp2.size() - 1; ++i) {
         distance += abs(temp2[i + 1] - temp2[i]);
     }
+    // update in 20200603, 需要计算扫描完跳回去的距离.
     // TODO distance 不知道要不要加头->尾
     output("C_SCAN", temp2, distance);
 }

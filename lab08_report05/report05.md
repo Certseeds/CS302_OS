@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-04-14 17:46:26
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-04-14 21:28:07
+ * @LastEditTime: 2020-06-03 15:02:04
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 1. What is deadlock?什么是死锁.
@@ -13,8 +13,8 @@ Answer:
 
 2. What are the requirements of deadlock?
     1. 资源不可以被共用,只能被单独进程所使用.在被进程使用时,其他申请的进程必须等待.
-    2. 申请到资源使用权限的进程可以无限期等待,同时持有资源.
-    3. 进程申请到的资源不会被强制收回.
+    2. 申请到资源使用权限的进程可以无限期等待,同时持有资源.(进程不主动给出资源).
+    3. 进程申请到的资源不会被强制收回.(OS不会主动将资源索回,同时也要求).
     4. 有一组进程,其中进程之间互相持有所需要的资源.
     + 注解:这些条件是deadlock发生的必要不充分条件.
 3. What’s different between deadlock prevention and deadlock avoidance?
