@@ -4,11 +4,11 @@
  * @Author: nanoseeds
  * @Date: 2020-02-18 11:08:40
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-04-07 23:49:08
+ * @LastEditTime: 2020-06-04 22:53:03
  -->
 CS302_OS
-1. All code based on AGPL3.0(or any later version).
-2. All *.md files are based on CC-BY-NC-SA-4.0(or any later version).
+1. All code based on AGPL_V3(or any later version).
+2. Any other files are based on CC-BY-NC-SA-4(or any later version).
 
 [![AGPL3.0 Licence](https://img.shields.io/badge/License-AGPL_V3-orange)][agpl_3_0]
 
