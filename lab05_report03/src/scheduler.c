@@ -9,6 +9,8 @@
 #include <fcntl.h>
 #include <time.h>
 #include "job.h"
+// TODO, only get 0 of 20 points.
+// if you know why,plase create issues.
 void pid_to_name(int pid, char *ret);
 void pid_to_name_2(int pid, char *ret);
 

@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-04-23 10:26:20
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-06-04 22:51:05
+ * @LastEditTime: 2020-07-04 17:54:08
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 0. 
@@ -20,7 +20,7 @@
 
 3. What is the segmentation mechanism and its advantages & disadvantages:
     1. 分段机制将内存分成长度不定的段,并将每一段中的虚拟地址空间映射到物理地址空间(每一段中对应的物理地址是连续的).
-    2. 分段机制的优点:将地址空间隔离,进程之间不会互相影响;运行时地址较为确定,方便使用.
+    2. 分段机制的优点:将地址空间隔离,进程之间不会互相影响;运行时地址较为确定,方便使用;可以方便的与其他用户共享代码和数据.
     3. 缺点:由于段的长度不确定,所以会产生碎片.
 
 4. What is the paging mechanism and its advantages & disadvantages:

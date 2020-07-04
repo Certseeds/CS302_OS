@@ -167,8 +167,12 @@ void LOOK(deque<int32_t> track) {
     output("LOOK", track, distance);
 }
 
+// TODO, needed is only C_LOOK algorith.
+// BUT i only get 26/40 scores, why?
+// IF you know why, please create issue for repo.
 void C_LOOK(deque<int32_t> track) {
     // TODO , infact, distance of lowest back to highest is hard to decide to calcaute or not.
+    // this refer the example.in.txt and example.out.txt.
     std::sort(std::begin(track), std::end(track), std::greater<int32_t>());
     int32_t dis = S + 2 * track.front() - 2 * track.back();
     while (track.back() <= S) {

@@ -18,7 +18,7 @@
  * 实现了相邻free_block的merge.
  * 每次打印出的free_block均为排序后的顺序.(BF为size小到大,WF为size大到小,FF为地址低位->高位)
  * */
-
+// 完成了基本功能,60分拿到了50.
 
 using std::cout;
 using std::cin;

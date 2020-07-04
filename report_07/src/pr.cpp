@@ -80,7 +80,8 @@ static std::unordered_map<Algorithm, std::function<void()>> umap = {
         {MIN,           MIN_F},
         {CLOCK,         CLOCK_F},
         {SECOND_CHANCE, SECOND_CHANCE_F}};
-
+// TODO, this do not get any scores, i do not know why.
+// If you know, please create issues.
 int main() {
     read_input();
     umap[algorithm]();
