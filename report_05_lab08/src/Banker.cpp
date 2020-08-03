@@ -23,16 +23,23 @@
  */
 // TODO, 只拿到了40分中的20分.
 #include <iostream>
+#include <deque>
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include "Banker_struct.hpp"
 
 using std::cin;
 using std::cout;
 using std::endl;
+using std::deque;
 using std::string;
 using std::vector;
 using std::unordered_map;
+
+std::tuple<vector<int32_t>, vector<command>> read_from_io();
+
+void banker_algorithm(std::tuple<vector<int32_t>, vector<command>> input);
 
 bool banker_juede(
         vector<int32_t> resource,
@@ -40,6 +47,81 @@ bool banker_juede(
         unordered_map<int32_t, vector<int32_t>> process_alloca,
         const vector<int32_t> &need,
         int32_t process_id);
+
+
+std::tuple<vector<int32_t>, vector<command>> read_from_io() {
+    int32_t r{0};
+    std::cin >> r;
+    vector<int32_t> resource(r, 0);
+    for (auto &i:resource) {
+        std::cin >> i;
+    }
+    int32_t process_id{0};
+    vector<command> vec_command;
+    while (std::cin >> process_id) {
+        command command_this = command(r);
+        command_this.process_id = process_id;
+        string command_input;
+        std::cin >> command_input;
+        command_this.command_type = name_to_type(command_input);
+        switch (command_this.command_type) {
+            case COMMAND_TYPE::NEW:
+            case COMMAND_TYPE::REQUEST: {
+                for (auto &i:command_this.resource) {
+                    std::cin >> i;
+                }
+                break;
+            }
+            case COMMAND_TYPE::TERMINATE: {
+                break;
+            }
+            case COMMAND_TYPE::NONE: {
+                exit(-1);
+            }
+        }
+        vec_command.push_back(command_this);
+    }
+    return std::tuple<vector<int32_t>, vector<command>>(resource, vec_command);
+}
+
+void banker_algorithm(const std::tuple<vector<int32_t>, vector<command>> input) {
+    vector<int32_t> resource;
+    vector<command> commands;
+    std::tie(resource, commands) = input;
+    int resource_size = resource.size();
+    deque<bool> deq(commands.size());
+    unordered_map<int32_t, process> u_process;
+    int count = 0;
+    for (const auto &item : commands) {
+        switch (item.command_type) {
+            case COMMAND_TYPE::NEW: {
+                // 判断能不能new出来
+                bool can_alloc = true;
+                for (auto i = 0; i < resource_size; ++i) {
+                    can_alloc = can_alloc && (resource[i] >= item.resource[i]);
+                }
+                u_process[item.process_id] = process(item.process_id, resource_size);
+                //TODO
+                break;
+            }
+            case COMMAND_TYPE::REQUEST: {
+                break;
+            }
+            case COMMAND_TYPE::TERMINATE: {
+                for (auto i = 0; i < resource_size; ++i) {
+                    // 归还资源不需要判断
+                    resource[i] += u_process[item.process_id].alloc_resource[i];
+                }
+                deq[count] = true;
+                break;
+            }
+        }
+        count++;
+    }
+}
+
+#ifndef CS302_OS_TEST_MACRO
+#define CS302_OS_TEST_MACRO
 
 int main() {
     int32_t items = 0;
@@ -113,12 +195,15 @@ int main() {
     return 0;
 }
 
+#endif //CS302_OS_TEST_MACRO
+
 bool banker_juede(
         vector<int32_t> resource,
         unordered_map<int32_t, vector<int32_t>> process_max,
         unordered_map<int32_t, vector<int32_t>> process_alloca,
         const vector<int32_t> &need,
         int32_t process_id) {
+
     for (uint32_t i = 0; i < resource.size(); ++i) {
         resource[i] -= need[i];
         process_max[process_id][i] -= need[i];

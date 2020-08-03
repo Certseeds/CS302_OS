@@ -17,5 +17,12 @@
     1. New process registering, such as "<font color="#dd0000">1678 new 6 5 0 7</font>", means process 1678 is a new process, whose maximum need of each resource is 6 5 0 7 (assume r is 4)
     2. Resource requesting, such as "<font color="#dd0000">233 request 0 4 5 3</font>", means process 233 is an old process, it request more resource, the need of each resource is 0 4 5 3.
     3. Process termination, such as "<font color="#dd0000">233 terminate</font>", means process 233 terminate and return all resources it holding.
+  + PS: all input is legal, which means 
+    1. before new, there do not exist process or is terminate.
+    2. before request, there must have new.
+    3. before terminate, there must have new. 
+  + PS2: 
+    1. but the pid can use multiply times. new,terminate can happen multiply times.
+    2. Although before terminate must have new, but there can do not have terminate for new. new and terminate's appear is not pair
 + Output:
   + For each command, output "<font color="#dd0000">OK</font>" or "<font color="#dd0000">NOT OK</font>" to determine if the command can execute. If OK, <font color="#dd0000">execute the command</font>.

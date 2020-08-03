@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-03-23 18:18:03
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-03-23 19:17:52
+ * @LastEditTime: 2020-07-04 20:24:24
  -->
 # Report 1
 studentID=1145141
@@ -35,7 +35,7 @@ therefore, this instruction change to `/home/${username}/${studentID}`
     1. Parameters: Specify a keyword or manual to search for help.
 3. man grep is to view the grep instruction help page
 
-## 5 run `mv ~/${studentID} /home`and" ls/home"
+## 5 run `mv ~/${studentID} /home`and `ls/home`
 1. The Linux mv command is used to rename a file or directory, or move a file or directory to another location.
 2. `mv [options] source dest`
 mv directory name directory name destination directory already exists, move the source directory to the destination directory; rename the destination directory if it does not exist
