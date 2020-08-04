@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16.6)
+cmake_minimum_required(VERSION 3.10.2)
 project(report_06_lab09 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)

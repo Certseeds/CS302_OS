@@ -21,14 +21,14 @@ management goals:
   1. More explanation about code:
     1. My idea: Keep a list of free-block, which stores memory blocks we can use. And also keep a list of allocated-block, which stores memory blocks we have allocated. When we allocated a memory block to a process, we also need to store the pid of this process. So when we want to kill process, we can find the correct block.
   2. Two import functions you need to complete:
-    1. <font color="#dd0000">int allocate_mem(allocated_block *ab)</font> which give a block memory space
-    2. <font color="#dd0000">int free_mem(allocated_block *ab)</font> which release the memory space for this block
+    1. `int allocate_mem(allocated_block *ab)` which give a block memory space
+    2. `int free_mem(allocated_block *ab)` which release the memory space for this block
     
-    For allocate, you should use your own algorithm to allocate memory space. That means you need to do something on the <font color="#dd0000">free-block list</font>.
+    For allocate, you should use your own algorithm to allocate memory space. That means you need to do something on the `free-block list`.
     
-    For free, when we free the memory space, we need to <font color="#dd0000">add the block to the freeblock list</font>. At this time, you also need to change the list by your own algorithm. 
+    For free, when we free the memory space, we need to `add the block to the freeblock list`. At this time, you also need to change the list by your own algorithm. 
   3. Some other things:
-    1. <font color="#dd0000">typedef pair<int, string> My_algo</font>; This line define my own type called My_algo. You can declare a variable of this type. The first component is an integer, the second component is a string. That means:   
+    1. `typedef pair<int, string> My_algo`; This line define my own type called My_algo. You can declare a variable of this type. The first component is an integer, the second component is a string. That means:   
         My_algo algo;  
         algo = make_pair(0, “FirstFit”);  
         printf(“%d %s\n”, algo.first, algo.second);  

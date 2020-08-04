@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-05-19 16:59:16
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-05-19 17:13:14
+ * @LastEditTime: 2020-08-04 12:04:00
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 ## OS Lab9 Page Replacement
@@ -22,7 +22,7 @@ When page miss happens, you need to replace the one which we won’t use for lon
 When page miss happens, you need to replace the one which is least recent used. (10)  
 
 #### Clock: 
-Using <font color="#dd0000"> circular linked list </font>  to simulate a clock. The hand is always point at the <font color="#dd0000"> next position of last replacement</font>. When we check whether the element in the list, we <font color="#dd0000"> don’t move the hand </font>. And during the check procedure, the valid bit does <font color="#dd0000">not change</font>. But if the element in the list, we finally <font color="#dd0000">change its valid bit to 1</font>. When miss occurs, we start from the hand, and replace the <font color="#dd0000">first element whose valid bit is 0</font>. During this procedure, remember to set the valid bit to 0. And after replacement, don’t forget to <font color="#dd0000">increase</font> the hand. (15) See the following example:
+Using *** circular linked list ***  to simulate a clock. The hand is always point at the *** next position of last replacement***. When we check whether the element in the list, we *** don’t move the hand ***. And during the check procedure, the valid bit does ***not change***. But if the element in the list, we finally ***change its valid bit to 1***. When miss occurs, we start from the hand, and replace the ***first element whose valid bit is 0***. During this procedure, remember to set the valid bit to 0. And after replacement, don’t forget to ***increase*** the hand. (15) See the following example:
 
 > Consider this input: cache size = 3, n = 7, 1 3 2 4 3 2 1
 
@@ -53,7 +53,7 @@ replace 2. Now list: 1(4_0), 2(1_1), 3(2, 0).
 We do a simplified version. Divide the total cache-size into two parts
 with the same size. One uses FIFO, the other uses LRU. (15)  
 
-<font color="#dd0000">(let cache size = n, then FIFO size = n / 2, LRU size = n – n / 2. For example, n = 123,FIFO size = 61, LRU size = 62)</font>  
+***(let cache size = n, then FIFO size = n / 2, LRU size = n – n / 2. For example, n = 123,FIFO size = 61, LRU size = 62)***  
 
    1. We check in both FIFO list and LRU list. (hit)
 
@@ -65,7 +65,7 @@ with the same size. One uses FIFO, the other uses LRU. (15)
 
    5. When we find the query page in the LRU list, we move it into the FIFO list. Note that we also need to move the last element in FIFO to LRU list.
 
-The allowed languages are <font color="#dd0000">C/C++</font>. The compile command is: <font color="#dd0000">g++ -std=c++11</font>.
+The allowed languages are ***C/C++***. The compile command is: ***g++ -std=c++11***.
 
 We will give you three test cases: 1.in(10000 pages), 2.in(100000 pages), 3.in(100000 pages)
 

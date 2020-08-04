@@ -1,3 +1,10 @@
+/**
+ * @Github: https://github.com/Certseeds/CS302_OS
+ * @Organization: SUSTech
+ * @Author: nanoseeds
+ * @Date: 2020-08-03 22:10:22
+ * @LastEditors  : nanoseeds
+ */
 /*  CS302_OS
     Copyright (C) 2020  nanoseeds
 
@@ -14,13 +21,6 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
-/**
- * @Github: https://github.com/Certseeds/CS302_OS
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-08-03 22:10:22
- * @LastEditors  : nanoseeds
- */
 #ifndef CS302_OS_INCLUDE_PUBLIC_H
 #define CS302_OS_INCLUDE_PUBLIC_H
 

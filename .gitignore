@@ -4,7 +4,7 @@
 ## @Author: nanoseeds
 ## @Date: 2020-02-18 11:00:48
 ## @LastEditors: nanoseeds
-## @LastEditTime: 2020-03-23 19:47:44
+## @LastEditTime: 2020-08-04 15:38:09
 ### 
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
@@ -223,7 +223,7 @@ hs_err_pid*
 
 # CMake
 cmake-build-*/
-
+cmake_build_*/
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 
