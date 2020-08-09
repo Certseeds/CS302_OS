@@ -1,18 +1,17 @@
 ### 
- # @Github: https://github.com/Certseeds/CS302_OS
- # @Organization: SUSTech
- # @Author: nanoseeds
- # @Date: 2020-02-18 11:05:00
+# @Github: https://github.com/Certseeds/CS302_OS
+# @Organization: SUSTech
+# @Author: nanoseeds
+# @Date: 2020-02-18 11:05:00
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-03-18 17:55:16
-### 
-
-*            text=auto
+ # @LastEditTime: 2020-08-09 22:03:12
+###
+* text=auto
 
 # itself
-.gitattributes text
-.gitignore     text
-*.md           text
+*.md text
+*.in text eol=lf linguist-language=data
+*.out text eol=lf linguist-language=data
 
 # scripts
 *.sh text eol=lf
@@ -131,7 +130,6 @@
 
 # Executables
 *.exe   binary
-*.out   binary
 *.app   binary
 
 # Basic .gitattributes for a python repo.

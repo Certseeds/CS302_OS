@@ -38,15 +38,18 @@ private:
     std::ifstream file_in = std::ifstream();
     std::ofstream file_out = std::ofstream();
 public:
+    static string file_paths;
     // default path1 is input and path2 is output
-    explicit CS302_redirect(const string &path1, const string &path2 = "") {
+    explicit CS302_redirect(string path1, string path2 = "") {
+        path1 = file_paths + path1;
+        path2 = file_paths + path2;
         this->strmin_buf = std::cin.rdbuf();
         this->strmout_buf = std::cout.rdbuf();
         this->file_in.open(path1);
-        std::cin.rdbuf(file_in.rdbuf());
+        std::cin.rdbuf(this->file_in.rdbuf());
         if (!path2.empty()) {
             this->file_out.open(path2);
-            std::cout.rdbuf(file_out.rdbuf());
+            std::cout.rdbuf(this->file_out.rdbuf());
         }
     }
 
@@ -59,9 +62,11 @@ public:
     CS302_redirect &operator=(CS302_redirect &&mat) = delete;
 
     ~CS302_redirect() {
+        std::cout.flush();
         std::cout.rdbuf(strmout_buf);
         std::cin.rdbuf(strmin_buf);
-        std::cout.flush();
+        this->file_in.close();
+        this->file_out.close();
     }
 
 };

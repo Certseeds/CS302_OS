@@ -44,9 +44,9 @@ std::chrono::milliseconds get_ms() {
 
 class CS302_timer {
 private:
-    std::chrono::milliseconds ms;
+    std::chrono::milliseconds ms{};
 public:
-    explicit CS302_timer() {
+    explicit CS302_timer() noexcept {
         std::cout << "complier in " << __DATE__ << " " << __TIME__ << std::endl;
         ms = get_ms();
     }

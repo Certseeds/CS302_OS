@@ -31,13 +31,13 @@
  */
 #ifndef CS302_OS_TEST_MACRO
 #define CS302_OS_TEST_MACRO
+
 #include "catch_main.hpp"
 #include "Banker.cpp"
 
 #include <iostream>
 #include <tuple>
 #include <vector>
-
 
 using Catch::Matchers::Contains;
 using Catch::Matchers::Equals;
@@ -46,43 +46,42 @@ using std::string;
 using std::tie;
 using std::tuple;
 using std::vector;
-const static string test_file_path = "./../../../report_05_lab08/data/";
-static auto files_tuple = [] {
-    const vector<string> datas{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09"};
+string CS302_redirect::file_paths = "./../../../report_05_lab08/data/";
+auto files_tuple = [] {
+    const static vector<string> datas{"00", "01", "02", "03", "04", "05", "06", "07", "08", "09"};
     std::vector<std::tuple<string, string, string>> files;
-    for (const auto& i : datas) {
+    for (const auto &i : datas) {
         files.push_back(std::make_tuple<string, string, string>(
-            test_file_path + i + "data.in",
-            test_file_path + i + "data.out",
-            test_file_path + i + "test.out"));
+                i + ".data.in",
+                i + ".data.out",
+                i + ".test.out"));
     }
     return files;
-}();
+};
+
 TEST_CASE("test case 1", "[Banker]") {
     SECTION("do") {
-        CS302_redirect cr{test_file_path + "00.data.in", test_file_path + "00.test.out"};
+        CS302_redirect cr{"00.data.in", "00.test.out"};
         auto input = read_from_io();
         auto output = banker_algorithm(input);
         output_OK(output);
-    }
-    SECTION("compare files") {
-        //    CHECK(compareFiles(test_file_path + "Sample0.test.out", test_file_path + "Sample0.out"));
+    }SECTION("compare files") {
+        CHECK(compareFiles("00.data.out", "00.test.out"));
     }
 }
 
-TEST_CASE("test case all", "[Banker][!hide]") {
-    for (const auto& i : files_tuple) {
+TEST_CASE("test case all", "[Banker]") {
+    for (const auto &i : files_tuple()) {
         string input_file;
         string output_file;
         string test_output_file;
         tie(input_file, output_file, test_output_file) = i;
-        SECTION("do") {
+        {
             CS302_redirect cr{input_file, test_output_file};
-            // do something
+            main2();
         }
-        SECTION("compare files") {
-            CHECK(compareFiles(output_file, test_output_file));
-        }
+        CHECK(compareFiles(output_file, test_output_file));
     }
 }
+
 #endif  // CS302_OS_TEST_MACRO

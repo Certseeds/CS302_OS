@@ -38,53 +38,67 @@
 using std::string;
 using std::vector;
 enum class COMMAND_TYPE {
-    NEW,
-    REQUEST,
-    TERMINATE,
-    NONE
+    NEW, REQUEST, TERMINATE
 };
-const vector<std::pair<string, COMMAND_TYPE>> command_name{
-    std::pair<string, COMMAND_TYPE>("new", COMMAND_TYPE::NEW),
-    std::pair<string, COMMAND_TYPE>("request", COMMAND_TYPE::REQUEST),
-    std::pair<string, COMMAND_TYPE>("terminate", COMMAND_TYPE::TERMINATE)};
+
+std::vector<std::pair<string, COMMAND_TYPE>> get_command_name();
+
+COMMAND_TYPE name_to_type(const string &str);
+
+std::vector<std::pair<string, COMMAND_TYPE>> get_command_name() {
+    static auto command_name = std::vector<std::pair<string, COMMAND_TYPE>>{
+            std::pair<string, COMMAND_TYPE>("new", COMMAND_TYPE::NEW),
+            std::pair<string, COMMAND_TYPE>("request", COMMAND_TYPE::REQUEST),
+            std::pair<string, COMMAND_TYPE>("terminate", COMMAND_TYPE::TERMINATE)};
+    return command_name;
+}
 
 COMMAND_TYPE name_to_type(const string &str) {
-    for (const auto &item : command_name) {
+    for (const auto &item : get_command_name()) {
         if (str == item.first) {
             return item.second;
         }
     }
-    return COMMAND_TYPE::NONE;  // should not reach there
+    return COMMAND_TYPE::TERMINATE;
+    // should not reach there
 }
 
 class command {
-   public:
+public:
     COMMAND_TYPE command_type;
     int32_t process_id;
-    vector<int> resource;
+    vector<int32_t> resource;
 
-    explicit command(int n) : command_type(COMMAND_TYPE::NONE), process_id(-1), resource(vector<int32_t>(n)){};
+    explicit command(int32_t n) :
+            command_type(COMMAND_TYPE::NEW), process_id(-1), resource(vector<int32_t>(n)) {};
 
-    command(COMMAND_TYPE ct, int32_t pi, vector<int> res) : command_type(ct), process_id(pi), resource(std::move(res)){};
+    command(COMMAND_TYPE ct, int32_t pi, int32_t r) :
+            command(ct, pi, vector<int32_t>(r, 0)) {};
+
+    command(COMMAND_TYPE ct, int32_t pi, vector<int32_t> res) :
+            command_type(ct), process_id(pi), resource(std::move(res)) {};
 };
 
 class process {
 public:
-    int32_t process_id;
-    vector<int> alloc_resource;
-    vector<int> max_resource;
-    vector<int> needed_resource;
-    process(){};
-    process(int32_t id, vector<int32_t> res, vector<int> max, vector<int> need) : process_id(id),
-                                                                                  alloc_resource(std::move(res)),
-                                                                                  max_resource(std::move(max)),
-                                                                                  needed_resource(std::move(need)){};
-    process(int32_t id, const vector<int> &max) {
-        this->process_id = id;
-        this->max_resource = vector<int32_t>(max);
-        this->alloc_resource = vector<int32_t>(max.size(), 0);
-        this->needed_resource = vector<int32_t>(max);
-    };
+    int32_t process_id{-1};
+    vector<int32_t> alloc_resource;
+    vector<int32_t> max_resource;
+    vector<int32_t> needed_resource;
+
+    process() = default;
+
+    process(int32_t id, vector<int32_t> res, vector<int32_t> max, vector<int32_t> need) :
+            process_id(id),
+            alloc_resource(std::move(res)),
+            max_resource(std::move(max)),
+            needed_resource(std::move(need)) {};
+
+    process(int32_t id, const vector<int32_t> &max) :
+            process(id,
+                    vector<int32_t>(max.size(), 0),
+                    vector<int32_t>(max),
+                    vector<int32_t>(max)) {};
 };
 
 #endif  //CS302_OS_REPORT_05_LAB08_SRC_BANKER_STRUCT_HPP

@@ -1,6 +1,6 @@
 # header begin
 cmake_minimum_required(VERSION 3.10.2)
-project(CS302_OS_LAB05_REPORT03 LANGUAGES C)
+project(report_03_lab05 LANGUAGES C)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/)
 

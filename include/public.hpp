@@ -40,7 +40,7 @@ using std::cout;
 CS302_timer timer{};
 
 static int faster_streams = []() {
-    srand(time(0));
+    srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
     std::istream::sync_with_stdio(false);
@@ -51,7 +51,9 @@ static int faster_streams = []() {
     return 0;
 }();
 
-bool compareFiles(const std::string &p1, const std::string &p2) {
+bool compareFiles(std::string p1, std::string p2) {
+    p1 = CS302_redirect::file_paths + p1;
+    p2 = CS302_redirect::file_paths + p2;
     // get from https://stackoverflow.com/questions/6163611/compare-two-files
     std::ifstream f1(p1, std::ifstream::binary | std::ifstream::ate);
     std::ifstream f2(p2, std::ifstream::binary | std::ifstream::ate);
