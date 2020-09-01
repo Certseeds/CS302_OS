@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-04-08 21:44:56
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-04-13 19:20:30
+ * @LastEditTime: 2020-09-01 23:00:37
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 ## Midterm of CS302_OS 2019
@@ -641,7 +641,7 @@ In following options, () is the scheduling algorithm that satisfies Shortest Job
 1. FCFS/FIFO,这个根本就没有考虑什么SJF,完全就是先来后到,queue结构,不满足1,满足2.排除
 2. HRRN,由于有waittime参与,不会导致starvation,而且也有CPU时间参与,都考虑到了.
 3. Round-robin,只是一个使用了抢占式的FIFO,不会cause starvation,但是和SJF无关.排除.
-4. 非抢占式SJF,由于可能有不断地小process进入,所以可能熬制starvation.排除.  
+4. 非抢占式SJF,由于可能有不断地小process进入,所以可能导致starvation.排除.  
 所以选择:**B**
 
 #### Question 8
@@ -932,7 +932,7 @@ int main(){
 |D| A1B2C1D2|
 
 ##### Answer
-1. 首先,fork出来的是子进程,变量是布胡同的,所以排除所有$>2$的选项.
+1. 首先,fork出来的是子进程,变量是不相同的,所以排除所有$>2$的选项.
 2. 然后,显然是子进程先行,所以是$A1B2C1D2$
 所以选择:**D**
 

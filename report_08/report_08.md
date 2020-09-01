@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-05-19 17:14:20
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-04 17:41:00
+ * @LastEditTime: 2020-08-24 11:24:23
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 [Toc]
@@ -20,24 +20,25 @@ Questions:
    4. The metric for measuring I/O performance are (1)__________,(2)___________.
 
 Answer:
-  1. I/O 控制方式大体上可以分成四种, 
+1. I/O 控制方式大体上可以分成四种, 
     1. Programmed I/O
     2. DMA 
     3. Interrupt-Based I/O
     4. Polling.
     但是我们要填空的话就填前两个.
    
-  2. 磁盘的图就不放了,这个可以看作一个圆柱坐标系,所以三个元素决定一个点. 
+2. 磁盘的图就不放了,这个可以看作一个圆柱坐标系,所以三个元素决定一个点. 
     1. 第一个因素是Z轴H,Head identifier,决定在那个磁片的哪个方向.
     2. 第二个因素是某个磁片上的圆周,或者说半径R,用磁片上的专业词汇来说,是Track identifier
     3. 第三个是圆周上的那一段圆弧,或者说,角度θ,用磁片上的专业词汇来说是Sector identifier.
    
-  3. 读写磁盘三个过程
+3. 读写磁盘三个过程
     1. 寻道时间:seek time,寻找正确的Track.
     2. 旋转等待时间:Rotational Latency,寻找正确的Sector.
     3. 读写时间:Transfer time找到了基本的sector之后进行读写.
     
-  4. 衡量I/O性能的自然就是延迟和带宽,(其他条件相同时)延迟越小越好,带宽越大越好.
+4. 衡量I/O性能的自然就是延迟和带宽,(其他条件相同时)延迟越小越好,带宽越大越好.
+Latency and bandwidth.
    
 ### 2
 Question:

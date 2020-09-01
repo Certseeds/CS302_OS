@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-03-04 20:35:10
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-06-03 15:15:40
+ * @LastEditTime: 2020-08-24 10:48:17
  -->
 1. 下载文件 忽略
 2. 什么是系统调用?
@@ -15,9 +15,13 @@
     2. 随后,fork的功能是,为调用其的进程(父进程)创建一个新的进程(子进程)副本.
     3. 子进程与父进程的Program Counter,Code,Memory以及文件等user-data都将完全一致.
     4. 在执行方面,父进程与子进程也将从相同的位置开始执行.
-    5. 但是,父进程与子进程的PCN将会存在不一致,父进程pid不变,子进程被分配新的pid;parent process id(ppid)不一致,父进程ppid不变,子进程ppid为父进程pid;Running Time也不同,父进程保持不变,子进程从零开始计算;父进程的file lock不变,但是子进程没有file lock的权限等等,pcb会存在很多不一致.
-    6. 然后,在执行上,fork将对父进程返回子进程的Process Id(pid),并对子进程返回 0.
-    7. 最后,fork不对父进程与子进程的执行顺序做任何保证.
+    5. 但是,父进程与子进程的PCN将会存在不一致
+      + 父进程pid不变,子进程被分配新的pid;
+      + parent process id(ppid)不一致,父进程ppid不变,子进程ppid为父进程pid;
+      + Running Time也不同,父进程保持不变,子进程从零开始计算;
+      + 父进程的file lock不变,但是子进程没有file lock的权限等等,pcb会存在很多不一致.
+    7. 然后,在执行上,fork将对父进程返回子进程的Process Id(pid),并对子进程返回 0.
+    8. 最后,fork不对父进程与子进程的执行顺序做任何保证.
 2. 如何实现进程间通信
     1. 父进程与子进程之间,通常使用匿名管道的方式进行通信,声明一个int pi [2],通过pipe()指令将其转化为文件描述符,之后父进程写入pi[1],子进程读取pi[0],实现进程间通信.通过对文件的读写来完成.
     2. 不相关的两个进程之间,可以使用有名管道的方式进行通讯,使用mkfifo(pathname,mode)的方式在pathname处实现一个可以被读写的文件.进程之间通过读写文件实现通信.

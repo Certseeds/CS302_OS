@@ -29,7 +29,7 @@ using std::abs;
 using std::cout;
 using std::deque;
 
-void read_datas();
+deque<int32_t> read_datas();
 
 void FCFS(deque<int32_t> track);
 
@@ -53,18 +53,18 @@ void output(const char *str, const deque<int32_t> &track, int32_t distance);
 static int32_t S = 0;
 static int32_t M = 0; // max is M-1
 static int32_t N = 0;
-static deque<int32_t> track_number;
 
-void read_datas() {
+deque<int32_t> read_datas() {
     std::cin >> S >> M >> N;
-    track_number = deque<int32_t>(N, 0);
+    deque<int32_t> track_number = deque<int32_t>(N, 0);
     for (auto &number : track_number) {
         std::cin >> number;
     }
+    return track_number;
 }
 
 int main() {
-    read_datas();
+    auto track_number = read_datas();
     FCFS(track_number);
     SSTF(track_number);
     SCAN(track_number);
