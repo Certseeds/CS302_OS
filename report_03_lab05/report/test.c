@@ -12,26 +12,28 @@
 #include <stdarg.h>
 #include <signal.h>
 #include <sys/types.h>
+
 struct waitqueue {            /* 双向的链表 double link list */
-  struct waitqueue *next;    //下一个等待作业
-  int count;       //当前等待作业的信息
+    struct waitqueue *next;    //下一个等待作业
+    int count;       //当前等待作业的信息
 };
-int main(){
-    struct waitqueue *head,*next,*s,*spre;
-    head = (struct waitqueue*)malloc(sizeof(struct waitqueue));
-    next = (struct waitqueue*)malloc(sizeof(struct waitqueue));
+
+int main() {
+    struct waitqueue *head, *next, *s, *spre;
+    head = (struct waitqueue *) malloc(sizeof(struct waitqueue));
+    next = (struct waitqueue *) malloc(sizeof(struct waitqueue));
     s = NULL;
     spre = NULL;
     head->next = next;
     head->count = 1;
-	next->next =NULL;
+    next->next = NULL;
     next->count = 2;
     s = head;
     spre = head;
     head = NULL;
-    if(s){
+    if (s) {
         printf("1230");
-    }else{
+    } else {
         printf("4560");
     }
 }

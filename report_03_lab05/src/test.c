@@ -6,7 +6,7 @@
  * @LastEditors: nanoseeds
  * @LastEditTime: 2020-04-01 00:52:31
  */
-/* CS302_OS 
+/* CS302_OS
     Copyright (C) 2020  nanoseeds
 
     CS302_OS is free software: you can redistribute it and/or modify
@@ -26,26 +26,30 @@
  * @Github: https://github.com/Certseeds/CS302_OS
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-03-30 11:19:18 
+ * @Date: 2020-03-30 11:19:18
  * @LastEditors  : nanoseeds
  */
 #include <stdio.h>
+
 #ifdef __GNUC__
+
 #include <unistd.h>
+
 #define sleepTime 1
 #else
 #include<windows.h>
 #define sleepTime 1000
 #endif
-int main(){
+
+int main() {
     int x = 114514;
-    printf("%d",x);
-    for(int i = 0;i<5000;i++){
-        printf("%d \n",x);
+    printf("%d", x);
+    for (int i = 0; i < 5000; i++) {
+        printf("%d \n", x);
         sleep(1);
-        printf("%d \n",x);
+        printf("%d \n", x);
         fflush(stdout);
     }
-    printf("%d\n",x);
+    printf("%d\n", x);
     return 0;
 }

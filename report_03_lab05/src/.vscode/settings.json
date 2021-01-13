@@ -1,11 +1,11 @@
 {
-    "files.associations": {
-        "sshd_config": "bat",
-        "type_traits": "c",
-        "wait.h": "c",
-        "job.h": "c",
-        "string.h": "c",
-        "time.h": "c"
-    },
-    "git.ignoreLimitWarning": true
+  "files.associations": {
+    "sshd_config": "bat",
+    "type_traits": "c",
+    "wait.h": "c",
+    "job.h": "c",
+    "string.h": "c",
+    "time.h": "c"
+  },
+  "git.ignoreLimitWarning": true
 }

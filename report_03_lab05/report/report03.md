@@ -271,49 +271,54 @@ int main(){
     + 正常执行结束,则其状态会改编为DONE,并从current(作业链表)被移除,并打印输出作业完成的语句.
     + 代码表现.
     + 状态更改为DONE的相关指令,出自原始版本的188-211行,其中`if (WIFEXITED(status)) `内为主要操作.
+
     ``` cpp
-	case SIGCHLD:
-		ret = waitpid(-1, &status, WNOHANG);
-		if (ret == 0 || ret == -1)
-			return;
-		
-		if (WIFEXITED(status)) {
-		#ifdef DEBUG
-		//printf("%d %d %d\n", ret, info->si_pid, current->job->pid);
-		//do_stat();
-		#endif
-			current->job->state = DONE;
-			printf("normal termation, exit status = %d\tjid = %d, pid = %d\n\n",
-				WEXITSTATUS(status), current->job->jid, current->job->pid);
+    case SIGCHLD:
+        ret = waitpid(-1, &status, WNOHANG);
+        if (ret == 0 || ret == -1)
+            return;
+        
+        if (WIFEXITED(status)) {
+        #ifdef DEBUG
+        //printf("%d %d %d\n", ret, info->si_pid, current->job->pid);
+        //do_stat();
+        #endif
+            current->job->state = DONE;
+            printf("normal termation, exit status = %d\tjid = %d, pid = %d\n\n",
+                WEXITSTATUS(status), current->job->jid, current->job->pid);
 
-		}  else if (WIFSIGNALED(status)) {
-		    printf("abnormal termation, signal number = %d\tjid = %d, pid = %d\n\n",
-				WTERMSIG(status), current->job->jid, current->job->pid);
+        }  else if (WIFSIGNALED(status)) {
+            printf("abnormal termation, signal number = %d\tjid = %d, pid = %d\n\n",
+                WTERMSIG(status), current->job->jid, current->job->pid);
 
-		} else if (WIFSTOPPED(status)) {
-		    printf("child stopped, signal number = %d\tjid = %d, pid = %d\n\n",
-				WSTOPSIG(status), current->job->jid, current->job->pid);
-		}
-		return;
+        } else if (WIFSTOPPED(status)) {
+            printf("child stopped, signal number = %d\tjid = %d, pid = %d\n\n",
+                WSTOPSIG(status), current->job->jid, current->job->pid);
+        }
+        return;
     ```
+
     + current(作业链表)移除其的操作出自原始版本的119-132行.
+
     ``` cpp
     if (current && current->job->state == DONE) {           /* current job finished */
-		
-		/* job has been done, remove it */
-		for (i = 0; (current->job->cmdarg)[i] != NULL; i++) {
-			free((current->job->cmdarg)[i]);
-			(current->job->cmdarg)[i] = NULL;
-		}
+        
+        /* job has been done, remove it */
+        for (i = 0; (current->job->cmdarg)[i] != NULL; i++) {
+            free((current->job->cmdarg)[i]);
+            (current->job->cmdarg)[i] = NULL;
+        }
 
-		free(current->job->cmdarg);
-		free(current->job);
-		free(current);
-		
-		current = NULL;
-	}
+        free(current->job->cmdarg);
+        free(current->job);
+        free(current);
+        
+        current = NULL;
+    }
     ```
+
     + 打印作业输出完成的语句主要出自原始版本的199,200行.
+
     ``` cpp
     printf("normal termation, exit status = %d\tjid = %d, pid = %d\n\n",
                        WEXITSTATUS(status), current->job->jid, current->job->pid);
@@ -322,6 +327,7 @@ int main(){
 14. Understand the process of job scheduling——job scheduling due to Priority(Execution results and corresponding code)：Schedueler作业调度的过程理解——因为优先级和进行作业调度(执行结果及代码表现)
     + 在每隔100ms,进行的jobselect中,遍历所有作业,并挑选其中优先级最高以及等待时间最长的作业,并将其指定为下一个时间片(100ms)执行的作业.
     + 代码体现:与原始的`jobselect()`相比,有修改.主要为原文件97行开始的修改.
+
     ``` cpp
     if(head){
         // 有元素
@@ -355,15 +361,18 @@ int main(){
         }
     }//没有元素 省去
     ```
+
     + 可见在判断时,先是使用curpri进行判断,随后根据wait_time进行判断,并对其他条件做了筛选.
 
 15. Understand the process of job scheduling——Job scheduling due to time slice (Execution results and corresponding code)： Schedueler作业调度的过程理解——因为时间片而进行作业调度(执行结果及代码表现)：
     + 本次实验中,指定的时间片为100ms,(10^5μs).每个作业的每次执行的基本单位是100ms.在100ms内,作业一直在执行,除非任务自己结束,向父进程发送SIGCHLD信号.每隔100ms,作业就会暂停,重新选择下一个时间片执行的作业.
     + 代码体现:基本单位是100ms
+
     ``` cpp
         interval.tv_sec = 0;
         interval.tv_usec = 100000;
     ```
+
     出自原文件463,464行.
     其他的代码体现在上文已经出现,不再赘述.
 

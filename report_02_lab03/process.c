@@ -13,8 +13,7 @@
 #include <sys/ioctl.h>
 #include <sys/termios.h>
 
-int main()
-{
+int main() {
     char *prog_argv[3];
     prog_argv[0] = "/usr/bin/vi";
     prog_argv[1] = "vi";
@@ -44,14 +43,14 @@ int main()
         /* 父进程等待子进程执行完毕，所在进程组成为前台进程组 */
         tcsetpgrp(0, ppid);
     }
-	while(1){
-	    fprintf(stdout,"ID(parent)=%d\n",ppid);
-		memset(buf, 0, 256);
-		fgets(buf, 256, stdin);
-		puts("ECHO: ");
-		puts(buf);
-		puts("\n");
-	}
+    while (1) {
+        fprintf(stdout, "ID(parent)=%d\n", ppid);
+        memset(buf, 0, 256);
+        fgets(buf, 256, stdin);
+        puts("ECHO: ");
+        puts(buf);
+        puts("\n");
+    }
 
-	return 0;
+    return 0;
 }

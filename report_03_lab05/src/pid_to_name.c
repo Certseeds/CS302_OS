@@ -1,4 +1,4 @@
-/* CS302_OS 
+/* CS302_OS
     Copyright (C) 2020  nanoseeds
 
     CS302_OS is free software: you can redistribute it and/or modify
@@ -18,38 +18,42 @@
  * @Github: https://github.com/Certseeds/CS302_OS
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-03-30 11:12:12 
+ * @Date: 2020-03-30 11:12:12
  * @LastEditors  : nanoseeds
  */
 #include <stdio.h>
 #include <string.h>
-void pid_to_name(int pid,char* ret);
-int main(int argc,char*argv[]){
-    for(int i = 1;i>5;i--){
-        printf("%d\n",i);
+
+void pid_to_name(int pid, char *ret);
+
+int main(int argc, char *argv[]) {
+    for (int i = 1; i > 5; i--) {
+        printf("%d\n", i);
     }
 }
-int begin_pid(){
+
+int begin_pid() {
     char out[1024];
-    memset(out,'\0', sizeof(char)*1024);
-    pid_to_name(1914,out);
-    printf("%s",out);
-    printf("%s",out);
-    printf("%s",out);
-    printf("%s",out);
+    memset(out, '\0', sizeof(char) * 1024);
+    pid_to_name(1914, out);
+    printf("%s", out);
+    printf("%s", out);
+    printf("%s", out);
+    printf("%s", out);
     return 0;
 }
-void pid_to_name(int pid,char* ret){
+
+void pid_to_name(int pid, char *ret) {
     int size_of_char = 1024;
     char command[size_of_char];
     char buffer[size_of_char];
-    memset(command,'\0', sizeof(char)*size_of_char);
-    memset(buffer,'\0', sizeof(char)*size_of_char);
-    sprintf(command,"ps -p %d -o comm=", pid);
-    printf("%s \n",command);
+    memset(command, '\0', sizeof(char) * size_of_char);
+    memset(buffer, '\0', sizeof(char) * size_of_char);
+    sprintf(command, "ps -p %d -o comm=", pid);
+    printf("%s \n", command);
     struct FILE *fp;
-    fp=popen(command, "r");
-    fgets(buffer,sizeof(char)*1024,fp);
-    printf("%s 114514 ",buffer);
-    strcpy(ret,buffer);
+    fp = popen(command, "r");
+    fgets(buffer, sizeof(char) * 1024, fp);
+    printf("%s 114514 ", buffer);
+    strcpy(ret, buffer);
 }

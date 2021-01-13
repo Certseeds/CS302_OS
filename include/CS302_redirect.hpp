@@ -1,4 +1,4 @@
-/*  CS302_OS 
+/*  CS302_OS
     Copyright (C) 2020  nanoseeds
 
     CS302_OS is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
  * @Github: https://github.com/Certseeds/CS302_OS
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-08-03 22:14:36 
+ * @Date: 2020-08-03 22:14:36
  * @LastEditors  : nanoseeds
  */
 #ifndef CS302_OS_INCLUDE_CS302_REDIRECT_H
@@ -39,6 +39,7 @@ private:
     std::ofstream file_out = std::ofstream();
 public:
     static string file_paths;
+
     // default path1 is input and path2 is output
     explicit CS302_redirect(string path1, string path2 = "") {
         path1 = file_paths + path1;

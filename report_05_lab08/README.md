@@ -7,7 +7,9 @@
  * @LastEditTime: 2020-08-04 12:07:10
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
-## Assignment: Banker’s Algorithm
+
+# Assignment: Banker’s Algorithm
+
 + You are asked to implement a Banker’s Algorithm, your code will be judged by standard test case.
 + language: C++11, you are free to use all STL
 + Input:

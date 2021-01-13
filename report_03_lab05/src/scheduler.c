@@ -9,9 +9,11 @@
 #include <fcntl.h>
 #include <time.h>
 #include "job.h"
+
 // TODO, only get 0 of 20 points.
 // if you know why,plase create issues.
 void pid_to_name(int pid, char *ret);
+
 void pid_to_name_2(int pid, char *ret);
 
 //#define DEBUG
@@ -76,7 +78,7 @@ void schedule() {
 }
 
 int allocjid() {
-    jobid+=1;
+    jobid += 1;
     return jobid;
 }
 
@@ -86,7 +88,7 @@ void updateall() {
     /* update running job's run_time */
     if (current) {
         current->job->run_time += 100;
-        current->job->curpri=current->job->defpri;
+        current->job->curpri = current->job->defpri;
     }
     /* update ready job's wait_time */
     for (p = head; p != NULL; p = p->next) {
@@ -102,32 +104,32 @@ struct waitqueue *jobselect() {
 
     select = NULL;
     selectprev = NULL;
-    if(head){
+    if (head) {
         // 有元素
-        if(head->next){
+        if (head->next) {
             //多于一个元素
             for (prev = head, p = head; p != NULL; prev = p, p = p->next) {
                 if (p->job->curpri > highest) {
                     select = p;
                     selectprev = prev;
                     highest = p->job->curpri;
-                }else if(highest == p->job->curpri
-                    && p->job->wait_time > select->job->wait_time){
+                } else if (highest == p->job->curpri
+                           && p->job->wait_time > select->job->wait_time) {
                     select = p;
                     selectprev = prev;
                 }
             }
             //*Find Bug 3.
-            if(selectprev == select){
-                struct waitqueue* temp = head->next;
+            if (selectprev == select) {
+                struct waitqueue *temp = head->next;
                 select = head;
-                select->next=NULL;
+                select->next = NULL;
                 head = temp;
-            }else{
+            } else {
                 selectprev->next = select->next;
                 select->next = NULL;
             }
-        }else{
+        } else {
             //只有一个元素
             select = head;
             head = NULL;
@@ -233,6 +235,7 @@ void sig_handler(int sig, siginfo_t *info, void *notused) {
         }
     }
 }
+
 //null,enqcmd is read from pipe.
 void do_enq(struct jobinfo *newjob, struct jobcmd enqcmd) {
     struct waitqueue *newnode, *p;
@@ -263,13 +266,13 @@ void do_enq(struct jobinfo *newjob, struct jobcmd enqcmd) {
         if (*offset == ':') {
 
             *(offset++) = '\0';
-            q = (char *) malloc(sizeof(char)*(offset - argvec));
+            q = (char *) malloc(sizeof(char) * (offset - argvec));
             strcpy(q, argvec);
             arglist[i] = q;
             i++;
             argvec = offset;
 
-        } else{
+        } else {
             offset++;
         }
     }
@@ -294,12 +297,12 @@ void do_enq(struct jobinfo *newjob, struct jobcmd enqcmd) {
         for (p = head; p->next != NULL; p = p->next);
 
         p->next = newnode;
-    } else{
+    } else {
         head = newnode;
     }
     /* create process for the job */
 
-    if ((pid = fork()) < 0){
+    if ((pid = fork()) < 0) {
         error_sys("enq fork failed");
     }
     /* In child process */
@@ -323,7 +326,7 @@ void do_enq(struct jobinfo *newjob, struct jobcmd enqcmd) {
         /* dup the globalfile descriptor to stdout */
         dup2(globalfd, 1);
         // *UNREAL FIND BUG2
-        if (execv(arglist[0], arglist) < 0){
+        if (execv(arglist[0], arglist) < 0) {
             printf("exec failed\n");
         }
         exit(1);
@@ -340,8 +343,8 @@ void do_deq(struct jobcmd deqcmd) {
     struct waitqueue *p, *prev, *select, *selectprev;
 
     deqid = atoi(deqcmd.data);
-    if(deqid <= 0 || deqid > jobid){
-       return;
+    if (deqid <= 0 || deqid > jobid) {
+        return;
     }
 #ifdef DEBUG
     printf("deq jid %d\n",deqid);
@@ -369,10 +372,10 @@ void do_deq(struct jobcmd deqcmd) {
         selectprev = NULL;
 
         if (head) {
-            if(deqid == head->job->jid){
-                select=head;
-                head=head->next;
-            }else{
+            if (deqid == head->job->jid) {
+                select = head;
+                head = head->next;
+            } else {
                 for (prev = head, p = head; p != NULL; prev = p, p = p->next) {
                     if (p->job->jid == deqid) {
                         select = p;
@@ -380,7 +383,7 @@ void do_deq(struct jobcmd deqcmd) {
                         break;
                     }
                 }
-                if(selectprev && select){
+                if (selectprev && select) {
                     selectprev->next = select->next;
                 }
             }
@@ -518,36 +521,37 @@ int main() {
 }
 
 void pid_to_name(int pid, char *ret) {
-    char command[1024]="ps -p 3687 comm=";
+    char command[1024] = "ps -p 3687 comm=";
     char buffer[1024];
     //printf("%s\n",command);
     struct FILE *fp;
     fp = popen(command, "r");
     //fgets(buffer, sizeof(char) * 1024, fp);
-    fread(buffer,sizeof(char),sizeof(buffer),fp);
-    pclose(fp); 
+    fread(buffer, sizeof(char), sizeof(buffer), fp);
+    pclose(fp);
     // ! THEN , the subprocess will send SIGCHLD.
     //! SO IT CAN NOT USE.
     //printf("%s\n",buffer);
     strcpy(ret, buffer);
 }
+
 void pid_to_name_2(int pid, char *ret) {
     char path[1024];
     char buffer[1024];
-    char useless [1024];
+    char useless[1024];
     int count = 0;
-    memset( path,  '\0', sizeof( path) );
-    memset(buffer ,  '\0', sizeof(buffer) );
-    memset(useless ,  '\0', sizeof(useless) );
+    memset(path, '\0', sizeof(path));
+    memset(buffer, '\0', sizeof(buffer));
+    memset(useless, '\0', sizeof(useless));
     sprintf(path, "/proc/%d/status", pid);
     struct FILE *fp;
-    fp=fopen(path,"r");
+    fp = fopen(path, "r");
     fscanf(fp, "%s", useless);
-    fgets(useless,1,(FILE*)fp);
-    fgets(buffer,10,(FILE*)fp);
-    if('\t'==buffer[0]){
+    fgets(useless, 1, (FILE *) fp);
+    fgets(buffer, 10, (FILE *) fp);
+    if ('\t' == buffer[0]) {
         count++;
     }
-    strcpy(ret,buffer+count);
+    strcpy(ret, buffer + count);
     fclose(fp);
 }

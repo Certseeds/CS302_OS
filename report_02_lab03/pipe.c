@@ -11,8 +11,7 @@
 #include <errno.h>
 
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     int status;
     int pid[2];//进程号
     int pipe_fd[2];//pipe的描述符，一个pipe有两个描述符，分别用于read时候的输入，和write时候的输出

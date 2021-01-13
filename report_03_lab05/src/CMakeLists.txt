@@ -4,7 +4,7 @@ project(report_03_lab05 LANGUAGES C)
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/)
 
-set (CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 99)
 
 add_executable(${PROJECT_NAME}
         # ./scheduler.c

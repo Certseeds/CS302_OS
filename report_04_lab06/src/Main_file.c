@@ -9,9 +9,11 @@
 #include "init.h"
 #include "read.h"
 #include "write.h"
+
 pthread_t rehs[600], wrhs[25];
 sem_t db, rc;
 int readcount;
+
 int main() {
     int nw, nr;
     printf("Enter the no readers : \n");

@@ -2,12 +2,13 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
-int main(){
+
+int main() {
     pid_t pid;
     pid = fork();
-    if(!pid){
-        execlp("/bin/ls","ls",NULL);
-    }else{
+    if (!pid) {
+        execlp("/bin/ls", "ls", NULL);
+    } else {
         wait(NULL);
         printf("Oh my child!\n");
     }

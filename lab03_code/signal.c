@@ -6,19 +6,17 @@
 
 int handled = 0;
 
-void siginthandler(int signum)
-{
-   // if (handled) return;
-   // handled = 1;
+void siginthandler(int signum) {
+    // if (handled) return;
+    // handled = 1;
     printf("SIGINT received.\n");
     return;
 }
 
-int main ()
-{
+int main() {
     printf("The pid of this process is %d\n", getpid());
     signal(SIGINT, siginthandler);
-    while(1){
+    while (1) {
         printf("waiting for sigint\n");
         sleep(1);
     }

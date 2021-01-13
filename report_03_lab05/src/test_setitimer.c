@@ -1,4 +1,4 @@
-/* CS302_OS 
+/* CS302_OS
     Copyright (C) 2020  nanoseeds
 
     CS302_OS is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
  * @Github: https://github.com/Certseeds/CS302_OS
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-03-30 18:06:51 
+ * @Date: 2020-03-30 18:06:51
  * @LastEditors  : nanoseeds
  */
 //void sig_handler(int sig, siginfo_t *info, void *notused);
@@ -68,7 +68,7 @@
 #include <stdint.h>
 
 void sigroutine(int signo) {
-    printf("signo is %d : ",signo);
+    printf("signo is %d : ", signo);
     switch (signo) {
         case SIGALRM: {
             printf("Catch a signal -- SIGALRM \n");
@@ -100,7 +100,7 @@ int main(int argc, char **argv) {
     int x = 1;
     for (;;) {
         x = x + 1;
-        if (x == INT32_MAX/2) {
+        if (x == INT32_MAX / 2) {
             printf("114514");
             x = 1;
         }

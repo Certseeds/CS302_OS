@@ -7,6 +7,7 @@
  * @LastEditTime: 2020-06-04 22:53:03
  -->
 CS302_OS
+
 1. All code based on AGPL_V3(or any later version).
 2. Any other files are based on CC-BY-NC-SA-4(or any later version).
 
@@ -15,14 +16,14 @@ CS302_OS
 [![AGPL_V3](https://www.gnu.org/graphics/agplv3-with-text-162x68.png)][agpl_3_0]
 
 [![CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-orange)][cc_by_nc_sa_4_0]
-  
+
 [![CC BY-SA 4.0][cc_by_nc_sa_4_0_image]][cc_by_nc_sa_4_0]
 
-[![language](https://img.shields.io/github/languages/top/Certseeds/CS302_OS?color=%23330099)]() 
+[![language](https://img.shields.io/github/languages/top/Certseeds/CS302_OS?color=%23330099)]()
 
-[![commit activity](https://img.shields.io/github/commit-activity/m/Certseeds/CS302_OS)](https://github.com/Certseeds/CS302_OS/commits/master) 
+[![commit activity](https://img.shields.io/github/commit-activity/m/Certseeds/CS302_OS)](https://github.com/Certseeds/CS302_OS/commits/master)
 
-[![code size](https://img.shields.io/github/languages/code-size/Certseeds/CS302_OS?color=%230099CC)]() 
+[![code size](https://img.shields.io/github/languages/code-size/Certseeds/CS302_OS?color=%230099CC)]()
 
 [![repo size](https://img.shields.io/github/repo-size/Certseeds/CS302_OS?color=%23CC9900)]()
 

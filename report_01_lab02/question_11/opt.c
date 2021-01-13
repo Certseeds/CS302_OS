@@ -9,12 +9,12 @@
 
 #include<stdio.h>
 
-int main(){
+int main() {
     int x = 114514;
     x += 1;
     x += 1;
     x += 1;
-    printf("%d\n",x);
+    printf("%d\n", x);
     return 0;
 }
 // it is really useful to use

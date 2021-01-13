@@ -12102,13 +12102,13 @@ namespace Catch {
 
 #if defined(CATCH_CONFIG_GLOBAL_NEXTAFTER)
 
-                                                                                                                                float nextafter(float x, float y) {
-        return ::nextafterf(x, y);
-    }
+        float nextafter(float x, float y) {
+            return ::nextafterf(x, y);
+        }
 
-    double nextafter(double x, double y) {
-        return ::nextafter(x, y);
-    }
+        double nextafter(double x, double y) {
+            return ::nextafter(x, y);
+        }
 
 #endif // ^^^ CATCH_CONFIG_GLOBAL_NEXTAFTER ^^^
 

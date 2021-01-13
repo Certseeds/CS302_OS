@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
+
 // 拿到了50/50.
 extern sem_t db, rc;
 extern int readcount;
