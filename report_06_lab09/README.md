@@ -49,6 +49,7 @@ when a pointer is not NULL, it can has next element.
   5. After killing a process, continuous free space needs to be merged
 
 Here is an example for case 5:  
+
 **after (2,1),(3,200),(3,300),(3,300),(3,200),5 you should get**:
 
 ``` log

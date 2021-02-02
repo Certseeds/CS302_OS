@@ -17,6 +17,7 @@ include_directories(./include)
 
 add_subdirectory(lab01_code)
 add_subdirectory(lab03_code)
+add_subdirectory(lab05_code)
 add_subdirectory(report_02_lab03)
 add_subdirectory(report_03_lab05/src)
 add_subdirectory(report_05_lab08/src)

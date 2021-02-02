@@ -5,8 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/util.cmake)
 
-ADDEXEC(fork)
-ADDEXEC(pipe)
-ADDEXEC(process)
-ADDEXEC(signal)
-ADDEXEC(sys)
+set(dependenciesOfMain fork pipe process signal sys)
+foreach (elementName IN LISTS dependenciesOfMain)
+    ADDEXEC(${elementName})
+endforeach ()
+unset(dependenciesOfMain)

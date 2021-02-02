@@ -24,10 +24,10 @@ using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
-const int32_t PROCESS_NAME_LEN = 32; //进程名最大长度
-const int32_t MIN_SLICE = 10;//内碎片最大大小
-const int32_t DEFAULT_MEM_SIZE = 1024; //总内存大小
-const int32_t DEFAULT_MEM_START = 0; //内存开始分配时的起始地址
+static constexpr const int32_t PROCESS_NAME_LEN = 32; //进程名最大长度
+static constexpr const int32_t MIN_SLICE = 10;//内碎片最大大小
+static constexpr const int32_t DEFAULT_MEM_SIZE = 1024; //总内存大小
+static constexpr const int32_t DEFAULT_MEM_START = 0; //内存开始分配时的起始地址
 
 int mem_size = DEFAULT_MEM_SIZE;
 bool flag = false; //当内存以及被分配了之后，不允许更改总内存大小的flag
@@ -35,8 +35,8 @@ static int pid = 0;
 
 algorithm_code algo_number = BF;
 
-free_block *free_block_head = new free_block(mem_size, DEFAULT_MEM_START, nullptr); //空闲数据块首指针
-allocated_block *allocated_block_head = nullptr; //分配块首指针
+auto *free_block_head = new free_block(mem_size, DEFAULT_MEM_START, nullptr); //空闲数据块首指针
+auto *allocated_block_head = static_cast<allocated_block *>(nullptr); //分配块首指针
 
 void display_menu(); //显示选项菜单
 void set_mem_size(); //设置内存大小
@@ -169,7 +169,7 @@ int create_new_process() { //创建新进程
         cout << "Memory can not <= 0" << endl;
         return -3;
     }
-    allocated_block *process = new allocated_block(++pid, mem_sz, 0, nullptr);
+    auto *process = new allocated_block(++pid, mem_sz, 0, nullptr);
     int32_t address_begin = allocate_mem(process);
     if (-1 == address_begin) {
         printf("Failed to create process with %d memory", mem_sz);
