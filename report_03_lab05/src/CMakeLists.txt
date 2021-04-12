@@ -9,6 +9,6 @@ set(CMAKE_C_STANDARD 99)
 add_executable(${PROJECT_NAME}
         # ./scheduler.c
         # ./pid_to_name.c
-        ./test_setitimer.c
+        ${CMAKE_CURRENT_SOURCE_DIR}/test_setitimer.c
         )
 SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE C)

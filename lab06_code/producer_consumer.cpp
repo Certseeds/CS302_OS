@@ -4,17 +4,25 @@
 #include <time.h>        // time()
 #include <pthread.h>        // pthread_*()
 
-#define N        10    // size of the shared buffer
-#define SLEEP_TIME    1
-#define    SLEEP_CHANCE    4    // sleep for "SLEEP_TIME" seconds at a chance of "1 / SLEEP_CHANCE"
-#define PRINT_BUF_SIZE    1024
+static constexpr const int32_t N = 10;    // size of the shared buffer
+static constexpr const int32_t SLEEP_TIME = 1;
+static constexpr const int32_t SLEEP_CHANCE = 4;   // sleep for "SLEEP_TIME" seconds at a chance of "1 / SLEEP_CHANCE"
+static constexpr const int32_t PRINT_BUF_SIZE = 1024;
 
-#define IS_FULL(H, T, __SIZE)    ((((T) + 1) % (__SIZE)) == (H))
-#define IS_EMPTY(H, T, __SIZE)    ((T) == (H))
-#define NEXT_SLOT(X, __SIZE)    (((X) + 1) % (__SIZE))
+inline bool IS_FULL(int32_t H, int32_t T, int32_t __SIZE) {
+    return ((T + 1) % __SIZE) == H;
+}
 
-#define PRODUCER_TURN    0
-#define CONSUMER_TURN    1
+inline bool IS_EMPTY(int32_t H, int32_t T, int32_t __SIZE) {
+    return T == H;
+}
+
+inline bool NEXT_SLOT(int32_t X, int32_t __SIZE) {
+    return (X + 1) % __SIZE;
+}
+
+static constexpr const int32_t PRODUCER_TURN = 0;
+static constexpr const int32_t CONSUMER_TURN = 1;
 
 /********************************\
  **                            **
@@ -117,8 +125,9 @@ void *producer(void *nothing) {
 
         pthread_mutex_unlock(&mutex);    // end of mutual exclusion.
 
-        if (rand_r(&s) % SLEEP_CHANCE == 0)
+        if (rand_r(&s) % SLEEP_CHANCE == 0) {
             sleep(1);
+        }
     }
 }
 
@@ -147,8 +156,9 @@ void *consumer(void *nothing) {
 
         pthread_mutex_unlock(&mutex);    // end of mutual exclusion.
 
-        if (rand_r(&s) % SLEEP_CHANCE == 0)
+        if (rand_r(&s) % SLEEP_CHANCE == 0) {
             sleep(1);
+        }
     }
 }
 
@@ -161,13 +171,13 @@ void *consumer(void *nothing) {
 int main(void) {
     pthread_t tid1, tid2;
 
-    srand(time(NULL));
-    pthread_create(&tid1, NULL, producer, NULL);    // create producer
-    pthread_create(&tid2, NULL, consumer, NULL);    // create consumer
+    srand(time(nullptr));
+    pthread_create(&tid1, nullptr, producer, nullptr);    // create producer
+    pthread_create(&tid2, nullptr, consumer, nullptr);    // create consumer
 
     // The join statements are just used for suspending the main threads.
-    pthread_join(tid1, NULL);    // never reached.
-    pthread_join(tid2, NULL);    // never reached.
+    pthread_join(tid1, nullptr);    // never reached.
+    pthread_join(tid2, nullptr);    // never reached.
 
     return 0;
 }
