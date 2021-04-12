@@ -1,4 +1,4 @@
-CC=gcc
+CC=gcc -std=c11 -Wall -Wextra
 hello_o:
 	$(CC) -c hello.c
 hello_E:

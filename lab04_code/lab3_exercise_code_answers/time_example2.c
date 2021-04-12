@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define MAX 1000000
+const int MAX = 1000000;
 
 int main(void) {
     int i;

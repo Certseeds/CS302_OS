@@ -1,0 +1,64 @@
+#
+# @Github: https://github.com/Certseeds/CS203_DSAA_template
+# @Organization: SUSTech
+# @Author: nanoseeds
+# @Date: 2020-07-27 22:08:31
+# @LastEditors: nanoseeds
+# @LastEditTime: 2020-07-27 22:10:08
+
+name: just compile
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test:
+    name: compile
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: checkout code
+      uses: actions/checkout@v2
+
+    # ensure the path and files of project
+    - name: ensure the path and files of project
+      run: sudo apt install tree ;tree
+
+    - name: system
+      run: uname -a
+
+    - name: hardwares - cpu
+      run: nproc; cat /proc/cpuinfo
+
+    - name: hardwares - memory
+      run:  cat /proc/meminfo | grep MemTotal
+
+    - name: hardwares - disk
+      run:  df -lh
+
+    - name: Use cmake
+      run: cmake --version
+
+    - name: prepare folder
+      run: cmake -E make_directory ./CMAKE_DEBUG_PATH
+
+    - name: cmake prepare for compile
+      working-directory: ./CMAKE_DEBUG_PATH
+      run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG
+
+    - name: cmake prepare for compile
+      working-directory: ./CMAKE_DEBUG_PATH
+      run: cmake --build . --config DEBUG --parallel $(nproc)
+
+    - name: tree
+      run: tree
+  # This workflow contains a single job called "build"

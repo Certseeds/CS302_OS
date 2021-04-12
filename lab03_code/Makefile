@@ -1,4 +1,4 @@
-CC=gcc
+CC=gcc -std=c11 -Wall -Wextra
 ABC:
 	$(CC) ABC.c -o ABC.out
 exec:

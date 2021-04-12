@@ -1,12 +1,14 @@
 /*dad_mem_mutex.c*/
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <fcntl.h>
-#include <time.h>
+#include <ctime>
 #include <sys/stat.h>
+#include <unistd.h>
+#include <pthread.h>
 
-void *mom() {
+void * mom(void *pVoid) {
     int fd;
     printf("Mom comes home.\n");
     sleep(rand() % 2 + 1);
@@ -28,7 +30,7 @@ void *mom() {
     close(fd);
 }
 
-void *dad() {
+void * dad(void *pVoid) {
     int fd;
     printf("Dad comes home.\n");
     sleep(rand() % 2 + 1);
@@ -51,15 +53,15 @@ void *dad() {
 }
 
 int main(int argc, char *argv[]) {
-    srand(time(0));
+    srand(time(nullptr));
     pthread_t p1, p2;
     int fd = open("fridge", O_CREAT | O_RDWR | O_TRUNC, 0777);  //empty the fridge
     close(fd);
     // Create two threads (both run func)
-    pthread_create(&p1, NULL, mom, NULL);
-    pthread_create(&p2, NULL, dad, NULL);
+    pthread_create(&p1, nullptr, mom, nullptr);
+    pthread_create(&p2, nullptr, dad, nullptr);
 
     // Wait for the threads to end.
-    pthread_join(p1, NULL);
-    pthread_join(p2, NULL);
+    pthread_join(p1, nullptr);
+    pthread_join(p2, nullptr);
 }

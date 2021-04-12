@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
+#include <string.h>
 
 // structure for message queue
 struct mesg_buffer {
@@ -23,7 +24,7 @@ int main() {
 
     while (1) {
         printf("Write Data : ");
-        gets(message.mesg_text);
+        fgets(message.mesg_text, 100, stdin);
 
         // msgsnd to send message
         msgsnd(msgid, &message, sizeof(message), 0);

@@ -1,5 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <sys/wait.h>
+#include <stdlib.h>
 
 int system_ver_CS302(const char *cmd_str) {
     if (cmd_str == -1)
